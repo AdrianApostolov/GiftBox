@@ -246,6 +246,28 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\GiftBox.Common\GiftBox.Common.csproj">
+      <Project>{7b8115c4-c267-4e8e-a477-0cfbb83befce}</Project>
+      <Name>GiftBox.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\GiftBox.Data.Models\GiftBox.Data.Models.csproj">
+      <Project>{fb238246-c38b-4cd3-97b2-a427d25fdf9d}</Project>
+      <Name>GiftBox.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\GiftBox.Data\GiftBox.Data.csproj">
+      <Project>{cca52223-13a1-4d80-8b09-9fdcd28981fd}</Project>
+      <Name>GiftBox.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\GiftBox.Services.Data\GiftBox.Services.Data.csproj">
+      <Project>{b3776e12-364a-410f-b7b2-160a6b2d344b}</Project>
+      <Name>GiftBox.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GiftBox.Web.Infrastructure\GiftBox.Web.Infrastructure.csproj">
+      <Project>{cca73a14-ac38-4235-b4b9-4b72a3f3ab9f}</Project>
+      <Name>GiftBox.Web.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
