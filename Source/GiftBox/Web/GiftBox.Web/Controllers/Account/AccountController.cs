@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using GiftBox.Common;
 using GiftBox.Data.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -158,7 +159,8 @@ namespace GiftBox.Web.Controllers
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
                     FirstName = model.FirstName,
-                    LastName = model.LastName
+                    LastName = model.LastName,
+                    ImageUrl = GlobalConstats.DefaultUserPicture
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

@@ -7,7 +7,7 @@
     {
         IQueryable<T> All();
 
-        T Find(object id);
+        T GetById(object id);
 
         void Add(T entity);
 

@@ -21,7 +21,7 @@
             return this.set;
         }
 
-        public virtual T Find(object id)
+        public virtual T GetById(object id)
         {
             return this.set.Find(id);
         }
@@ -44,7 +44,7 @@
 
         public virtual T Delete(object id)
         {
-            var entity = this.Find(id);
+            var entity = this.GetById(id);
             this.Delete(entity);
             return entity;
         }

@@ -34,7 +34,7 @@
 
         public override T Delete(object id)
         {
-            var entity = this.Find(id);
+            var entity = this.GetById(id);
             entity.DeletedOn = DateTime.Now;
             entity.IsDeleted = true;
             this.ChangeEntityState(entity, EntityState.Modified);

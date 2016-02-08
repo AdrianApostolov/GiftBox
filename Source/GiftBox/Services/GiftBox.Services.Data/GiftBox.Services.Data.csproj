@@ -57,11 +57,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\GiftBox.Data.Common\GiftBox.Data.Common.csproj">
+      <Project>{FA6C87E0-3D53-4C38-A370-0B1F4FC89AC6}</Project>
+      <Name>GiftBox.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\GiftBox.Data.Models\GiftBox.Data.Models.csproj">
+      <Project>{FB238246-C38B-4CD3-97B2-A427D25FDF9D}</Project>
+      <Name>GiftBox.Data.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
