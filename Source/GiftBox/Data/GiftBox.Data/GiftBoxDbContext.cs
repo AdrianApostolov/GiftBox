@@ -1,5 +1,4 @@
-﻿
-namespace GiftBox.Data
+﻿namespace GiftBox.Data
 {
     using System;
     using System.Data.Entity;
@@ -27,6 +26,23 @@ namespace GiftBox.Data
         {
             return new GiftBoxDbContext();
         }
+
+        public virtual IDbSet<Child> Children { get; set; }
+
+        public virtual IDbSet<Comment> Comments { get; set; }
+
+        public virtual IDbSet<EventCategory> EventCategorys { get; set; }
+
+        public virtual IDbSet<Gift> Gifts { get; set; }
+
+        public virtual IDbSet<Home> Homes { get; set; }
+
+        public virtual IDbSet<Location> Locations { get; set; }
+
+        public virtual IDbSet<Need> Needs { get; set; }
+
+        public virtual IDbSet<NeedCategory> NeedCategorys { get; set; }
+
 
         public override int SaveChanges()
         {

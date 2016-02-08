@@ -1,3 +1,8 @@
+using System.Data.Entity;
+using GiftBox.Data;
+using GiftBox.Data.Common.Repositories;
+using GiftBox.Data.Contracts;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(GiftBox.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(GiftBox.Web.App_Start.NinjectWebCommon), "Stop")]
 
@@ -10,6 +15,7 @@ namespace GiftBox.Web.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Extensions.Conventions;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +67,12 @@ namespace GiftBox.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<DbContext>().To<GiftBoxDbContext>().InRequestScope();
+            kernel.Bind<IGiftBoxDbContext>().To<GiftBoxDbContext>().InRequestScope();
+            kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+            kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
+
+            kernel.Bind(b => b.From("GiftBox.Services.Data").SelectAllClasses().BindDefaultInterface());
         }        
     }
 }

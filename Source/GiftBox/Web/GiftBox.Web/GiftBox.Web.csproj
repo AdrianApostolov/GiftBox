@@ -77,6 +77,10 @@
       <HintPath>..\..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
       <Private>True</Private>
@@ -294,6 +298,10 @@
     <ProjectReference Include="..\..\Common\GiftBox.Common\GiftBox.Common.csproj">
       <Project>{7b8115c4-c267-4e8e-a477-0cfbb83befce}</Project>
       <Name>GiftBox.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\GiftBox.Data.Common\GiftBox.Data.Common.csproj">
+      <Project>{fa6c87e0-3d53-4c38-a370-0b1f4fc89ac6}</Project>
+      <Name>GiftBox.Data.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Data\GiftBox.Data.Models\GiftBox.Data.Models.csproj">
       <Project>{fb238246-c38b-4cd3-97b2-a427d25fdf9d}</Project>
