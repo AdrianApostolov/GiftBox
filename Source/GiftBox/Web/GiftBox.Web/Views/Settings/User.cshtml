@@ -1,11 +1,11 @@
-﻿@using GiftBox.Web.Controllers.Account
+﻿@using GiftBox.Web.HtmlHelpers
 @model GiftBox.Web.ViewModels.Account.UserViewModel
 @{
     ViewBag.Title = "User";
 }
 
 <div class="card-panel">
-    <h3 class="center">Profile overview</h3>
+    <h3 class="center">Profile</h3>
 
     <div class="row">
         <div class="col s6 m5 hoverable">
@@ -67,15 +67,63 @@
                         <div class="col s1">
                             <span class="btn-floating">
                                 <i class="mdi-image-photo-camera"></i>
-                                <input type="file"  name="File" id="File"/>
+                                <input type="file" name="File" id="File" />
                             </span>
                         </div>
                         <div class="col s1" style="margin-left: 10px;">
-                             <input type="submit" value="Upload" class="btn" />
+                            @Html.Submit("Upload")
                         </div>
                     </div>
+                </div>
+                <div class="center">
+                    <a class="waves-effect waves-light btn modal-trigger deep-purple accent-2" href="#modal1">Snapshot!</a>
                 </div>
             </div>
         }
     </div>
+   
+    <div class="row">
+        <div id="modal1" class="modal col offset-s2 s4">
+            <div class="modal-content">
+                <h3 class="center">Take a picture</h3>
+                <div class="center" style="margin-bottom: 10px;">
+                    <input type="button" class="btn deep-purple accent-2" value="Shoot!" onclick="webcam.capture();" />
+                </div>
+                <div class="center" id="Camera"></div>
+            </div>
+            <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            </div>
+        </div>
+    </div>
 </div>
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery.webcam.min.js")">
+    </script>
+    <script>
+        $("#Camera").webcam({
+            width: 320,
+            height: 240,
+            mode: "save",
+            swffile: "@Url.Content("~/Scripts/jscam.swf")",
+            onTick: function() {},
+            onSave: function() {
+                location.reload();
+
+            },
+            onCapture: function() {
+                webcam.save("@Url.Content("~/Settings/Capture")");
+            },
+            debug: function() {},
+            onLoad: function() {}
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.modal-trigger').leanModal();
+        });
+        $('#modal1').openModal();
+        $('#modal1').closeModal();
+    </script>
+}

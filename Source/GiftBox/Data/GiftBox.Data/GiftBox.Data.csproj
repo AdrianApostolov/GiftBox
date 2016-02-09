@@ -60,6 +60,7 @@
     <Compile Include="Contracts\IGiftBoxDbContext.cs" />
     <Compile Include="GiftBoxDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\DataSeeder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +68,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\GiftBox.Common\GiftBox.Common.csproj">
+      <Project>{7b8115c4-c267-4e8e-a477-0cfbb83befce}</Project>
+      <Name>GiftBox.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GiftBox.Data.Common\GiftBox.Data.Common.csproj">
       <Project>{fa6c87e0-3d53-4c38-a370-0b1f4fc89ac6}</Project>
       <Name>GiftBox.Data.Common</Name>

@@ -1,24 +1,20 @@
-﻿
-
-using System.IO;
-using System.Web;
-
-namespace GiftBox.Web.Controllers.Account
+﻿namespace GiftBox.Web.Controllers.Account
 {
     using System.Web.Mvc;
-    using System.Linq;
+    using System.IO;
+    using System.Web;
 
+    using GiftBox.Common;
     using GiftBox.Web.ViewModels.Account;
     using GiftBox.Services.Data.Contracts;
 
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
 
     public class SettingsController : BaseController
     {
 
         public SettingsController(IUsersService users)
-            :base(users)
+            : base(users)
         {
         }
 
@@ -27,11 +23,6 @@ namespace GiftBox.Web.Controllers.Account
         {
             var user = Mapper.Map<UserViewModel>(this.users.GetById(this.CurrentUser.Id));
             return View(user);
-        }
-
-        public ActionResult Home()
-        {
-            return View();
         }
 
         [HttpPost]
@@ -56,9 +47,45 @@ namespace GiftBox.Web.Controllers.Account
                 user.ImageUrl = imageUrl;
                 this.users.Update();
                 this.TempData["Success"] = "Profile picture updated!";
+                
             }
 
-            return this.View("User", Mapper.Map<UserViewModel>(user));
+            return this.RedirectToAction("User");
+        }
+
+        [HttpPost]
+        public ActionResult Capture()
+        {
+            var user = this.users.GetById(this.CurrentUser.Id);
+
+            if (this.Request.InputStream != null)
+            {
+                string filename = user.Id + ".jpg";
+                string folderPath = Server.MapPath("~/Resources/Images/Profile/" + user.Id);
+                string imagePath = folderPath + "/" + filename;
+                string imageUrl = "../Resources/Images/Profile/" + user.Id + "/" + filename;
+
+                if (!Directory.Exists(folderPath))
+                {
+                    DirectoryInfo di = Directory.CreateDirectory(folderPath);
+                }
+
+                var stream = Request.InputStream;
+                string dump;
+
+                using (var reader = new StreamReader(stream))
+                {
+                    dump = reader.ReadToEnd();
+                }
+
+                System.IO.File.WriteAllBytes(imagePath, HelperMethods.StringToBytes(dump));
+
+                user.ImageUrl = imageUrl;
+                this.users.Update();
+                this.TempData["Success"] = "Profile picture updated!";
+            }
+
+            return this.RedirectToAction("User");
         }
     }
 }

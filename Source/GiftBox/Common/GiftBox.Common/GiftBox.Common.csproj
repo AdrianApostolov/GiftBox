@@ -40,8 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GlobalConstats.cs" />
+    <Compile Include="GlobalConstants.cs" />
+    <Compile Include="HelperMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\GiftBox.Services.Data\GiftBox.Services.Data.csproj">
+      <Project>{b3776e12-364a-410f-b7b2-160a6b2d344b}</Project>
+      <Name>GiftBox.Services.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

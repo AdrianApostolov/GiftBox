@@ -1,19 +1,16 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using GiftBox.Common;
-using GiftBox.Data.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using GiftBox.Web.Models;
-
-namespace GiftBox.Web.Controllers
+﻿namespace GiftBox.Web.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using GiftBox.Common;
+    using GiftBox.Data.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using GiftBox.Web.Models;
+
     [Authorize]
     public class AccountController : Controller
     {
@@ -160,11 +157,21 @@ namespace GiftBox.Web.Controllers
                     PhoneNumber = model.PhoneNumber,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    ImageUrl = GlobalConstats.DefaultUserPicture
+                    ImageUrl = GlobalConstants.DefaultUserPicture,
+                    UserRole = model.UserRole
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    if (user.UserRole == "HomeAdministrator")
+                    {
+                        UserManager.AddToRole(user.Id, GlobalConstants.HomeAdministrator);
+                    }
+                    else
+                    {
+                        UserManager.AddToRole(user.Id, GlobalConstants.UserRole);
+                    }
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

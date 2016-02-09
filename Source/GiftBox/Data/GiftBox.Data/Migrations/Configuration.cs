@@ -16,7 +16,8 @@ namespace GiftBox.Data.Migrations
 
         protected override void Seed(GiftBoxDbContext context)
         {
-           
+            DataSeeder.SeedRoles(context);
+            DataSeeder.SeedAdmin(context);
         }
     }
 }

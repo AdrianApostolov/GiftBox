@@ -23,7 +23,10 @@ namespace GiftBox.Web.Controllers
 
         protected override IAsyncResult BeginExecute(RequestContext requestContext, AsyncCallback callback, object state)
         {
-            this.CurrentUser = this.users.All().Where(u => u.UserName == requestContext.HttpContext.User.Identity.Name).FirstOrDefault();
+            this.CurrentUser = this.users
+                .All()
+                .FirstOrDefault(u => u.UserName == requestContext.HttpContext.User.Identity.Name);
+
             return base.BeginExecute(requestContext, callback, state);
         }
     }

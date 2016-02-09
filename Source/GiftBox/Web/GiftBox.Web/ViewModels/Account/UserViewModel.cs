@@ -19,6 +19,8 @@
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
+        public string UserRole { get; set; }
+
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
