@@ -1,1 +1,12 @@
-﻿
+﻿.card-profile-image {
+    width: 140px;
+    position: absolute;
+    top: 220px;
+    z-index: 1;
+    left: 15px;
+    cursor: pointer;
+    margin: 0;
+}
+.circle {
+    border-radius: 10px;
+}

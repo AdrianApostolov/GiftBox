@@ -1,8 +1,9 @@
 ﻿namespace GiftBox.Data.Models
 {
     using System;
+    using GiftBox.Data.Common.Models;
 
-    public class Gift
+    public class Gift : AuditInfo, IDeletableEntity
     {
         public int Id { get; set; }
 
@@ -23,5 +24,9 @@
         public  int ChildId { get; set; }
 
         public virtual Child Child { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

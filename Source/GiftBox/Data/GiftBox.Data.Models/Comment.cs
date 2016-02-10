@@ -1,6 +1,9 @@
-﻿namespace GiftBox.Data.Models
+﻿using System;
+using GiftBox.Data.Common.Models;
+
+namespace GiftBox.Data.Models
 {
-    public class Comment
+    public class Comment : AuditInfo, IDeletableEntity
     {
         public int Id { get; set; }
 
@@ -13,5 +16,9 @@
         public int UserId { get; set; }
 
         public virtual User User { get; set; }
+        
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

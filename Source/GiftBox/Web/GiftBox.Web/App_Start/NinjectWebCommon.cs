@@ -1,15 +1,17 @@
-using System.Data.Entity;
-using GiftBox.Data;
-using GiftBox.Data.Common.Repositories;
-using GiftBox.Data.Contracts;
-
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(GiftBox.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(GiftBox.Web.App_Start.NinjectWebCommon), "Stop")]
 
 namespace GiftBox.Web.App_Start
 {
+    using System.Data.Entity;
     using System;
     using System.Web;
+
+    using GiftBox.Data;
+    using GiftBox.Data.Common.Repositories;
+    using GiftBox.Data.Contracts;
+    using GiftBox.Web.Infrastructure.Caching;
+    using GiftBox.Web.Infrastructure.Populators;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -69,8 +71,12 @@ namespace GiftBox.Web.App_Start
         {
             kernel.Bind<DbContext>().To<GiftBoxDbContext>().InRequestScope();
             kernel.Bind<IGiftBoxDbContext>().To<GiftBoxDbContext>().InRequestScope();
+
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
+
+            kernel.Bind<IDropDownListPopulator>().To<DropDownListPopulator>();
+            kernel.Bind<ICacheService>().To<InMemoryCache>();
 
             kernel.Bind(b => b.From("GiftBox.Services.Data").SelectAllClasses().BindDefaultInterface());
         }        

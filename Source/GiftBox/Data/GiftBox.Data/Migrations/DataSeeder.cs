@@ -25,7 +25,7 @@ namespace GiftBox.Data.Migrations
                 FirstName = "Adrian",
                 LastName = "Apostolov",
                 Email = AdminEmail,
-                UserName = AdminEmail,
+                UserName = "Adrian.Apostolov",
                 PhoneNumber = "0889972697",
                 ImageUrl = GlobalConstants.DefaultUserPicture,
             };

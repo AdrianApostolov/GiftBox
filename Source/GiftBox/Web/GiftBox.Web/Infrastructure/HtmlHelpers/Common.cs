@@ -1,4 +1,4 @@
-﻿namespace GiftBox.Web.HtmlHelpers
+﻿namespace GiftBox.Web.Infrastructure.HtmlHelpers
 {
     using System.Web.Mvc;
 

@@ -1,13 +1,13 @@
 ﻿namespace GiftBox.Data.Models
 {
+    using System;
     using System.Collections.Generic;
+    using GiftBox.Data.Common.Models;
 
-    public class Home
+    public class Home : AuditInfo, IDeletableEntity
     {
         private ICollection<Comment> comments;
-         
         private ICollection<Child> children;
-
         private ICollection<Need> needs;
 
         public Home()
@@ -19,19 +19,29 @@
 
         public int Id { get; set; }
 
+        public string Name { get; set; }
+
         public string HomeAdministratorId { get; set; }
 
         public virtual User HomeAdministrator { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public int LocationId { get; set; }
 
         public Location Location { get; set; }
+
+        public string AditionalInfo { get; set; }
 
         public string PhoneNumber { get; set; }
 
         public string ContactInfo { get; set; }
 
         public bool IsApproved { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
 
         public virtual ICollection<Comment> Comments
         {

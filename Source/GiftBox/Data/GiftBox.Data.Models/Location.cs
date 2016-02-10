@@ -1,6 +1,9 @@
 ﻿namespace GiftBox.Data.Models
 {
-    public class Location
+    using  System;
+    using GiftBox.Data.Common.Models;
+
+    public class Location : AuditInfo, IDeletableEntity
     {
         public int Id { get; set; }
 
@@ -10,6 +13,10 @@
 
         public string PostCode { get; set; }
 
-        public  string Address { get; set; }
+        public string Address { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

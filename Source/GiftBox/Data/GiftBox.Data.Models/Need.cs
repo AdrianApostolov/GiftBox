@@ -1,8 +1,12 @@
-﻿namespace GiftBox.Data.Models
+﻿
+using System;
+
+namespace GiftBox.Data.Models
 {
     using System.Collections.Generic;
+    using GiftBox.Data.Common.Models;
 
-    public class Need
+    public class Need : AuditInfo, IDeletableEntity
     {
         private ICollection<Comment> comments;
 
@@ -29,10 +33,15 @@
 
         public string AccountHolder { get; set; }
 
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
         public virtual ICollection<Comment> Comments
         {
             get { return this.comments; }
             set { this.comments = value; }
-        } 
+        }
+
     }
 }

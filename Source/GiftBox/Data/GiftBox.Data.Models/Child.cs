@@ -1,8 +1,11 @@
-﻿namespace GiftBox.Data.Models
+﻿using System;
+
+namespace GiftBox.Data.Models
 {
     using System.Collections.Generic;
+    using GiftBox.Data.Common.Models;
 
-    public class Child
+    public class Child : AuditInfo, IDeletableEntity
     {
         public Child()
         {
@@ -30,11 +33,15 @@
         public string BIC { get; set; }
 
         public string AccountHolder { get; set; }
+        
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
 
         public virtual ICollection<Gift> Gifts
         {
             get { return this.gifts; }
             set { this.gifts = value; }
-        } 
+        }
     }
 }

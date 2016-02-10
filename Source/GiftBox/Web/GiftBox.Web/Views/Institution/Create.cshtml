@@ -1,0 +1,82 @@
+﻿@using GiftBox.Web.Infrastructure.HtmlHelpers
+@model GiftBox.Web.ViewModels.Institution.AddInstitutionViewModel
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "Institution", FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="row">
+    <div class="col s8 offset-s2">
+        <div class="card-panel z-depth-4">
+            <h4 class="center">Create Home</h4>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="mdi-action-account-circle prefix"></i>
+                    @Html.TextBoxFor(m => m.Name)
+                    @Html.ValidationMessageFor(model => model.Name, "", new { style = "color: red" })
+                    @Html.LabelFor(m => m.Name)
+                </div>
+                <div class="input-field col s6">
+                    <i class="mdi-communication-phone prefix"></i>
+                    @Html.TextBoxFor(m => m.PhoneNumber)
+                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { style = "color: red" })
+                    @Html.LabelFor(m => m.PhoneNumber)
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="mdi-communication-chat prefix"></i>
+                    @Html.TextAreaFor(m => m.AditionalInfo, new {@class = "materialize-textarea", length = "150"})
+                    @Html.ValidationMessageFor(model => model.AditionalInfo, "", new {style = "color: red"})
+                    @Html.LabelFor(m => m.AditionalInfo)
+                </div>
+                <div class="input-field col s6">
+                    <i class="mdi-communication-comment prefix"></i>
+                    @Html.TextAreaFor(m => m.ContactInfo, new {@class = "materialize-textarea", length = "100"})
+                    @Html.ValidationMessageFor(model => model.ContactInfo, "", new {style = "color: red"})
+                    @Html.LabelFor(m => m.ContactInfo)
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="mdi-social-public prefix"></i>
+                    @Html.TextBoxFor(m => m.Location.Country, new {value = "Bulgaria"})
+                    @Html.ValidationMessageFor(m => m.Location.Country, "", new {style = "color: red"})
+                    @Html.LabelFor(m => m.Location.Country)
+                </div>
+                <div class="input-field col s6">
+                    <i class="mdi-social-location-city prefix"></i>
+                    @Html.TextBoxFor(m => m.Location.City)
+                    @Html.ValidationMessageFor(m => m.Location.City, "", new {style = "color: red"})
+                    @Html.LabelFor(m => m.Location.City)
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="mdi-communication-business prefix"></i>
+                    @Html.TextBoxFor(m => m.Location.Address, new { value = "Bulgaria" })
+                    @Html.ValidationMessageFor(m => m.Location.Address, "", new { style = "color: red" })
+                    @Html.LabelFor(m => m.Location.Address)
+                </div>
+                <div class="input-field col s6">
+                    <i class="mdi-content-markunread prefix"></i>
+                    @Html.TextBoxFor(m => m.Location.PostCode)
+                    @Html.ValidationMessageFor(m => m.Location.PostCode, "", new { style = "color: red" })
+                    @Html.LabelFor(m => m.Location.PostCode)
+                </div>
+            </div>
+            <div class="center col-s6">
+                @Html.Submit("Create Home", new { @class = "btn pink" })
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -19,14 +19,14 @@
         }
 
         // GET: Settings
-        public ActionResult User()
+        public ActionResult UpdateProfile(string id)
         {
-            var user = Mapper.Map<UserViewModel>(this.users.GetById(this.CurrentUser.Id));
+            var user = Mapper.Map<UserViewModel>(this.users.GetById(id));
             return View(user);
         }
 
         [HttpPost]
-        public ActionResult UpdateProfile(HttpPostedFileBase file)
+        public ActionResult UpdateProfile(HttpPostedFileBase file, string id)
         {
 
             var user = this.users.GetById(this.CurrentUser.Id);
@@ -36,7 +36,7 @@
                 string filename = Path.GetFileName(file.FileName);
                 string folderPath = Server.MapPath("~/Resources/Images/Profile/" + user.Id);
                 string imagePath = folderPath + "/" + filename;
-                string imageUrl = "../Resources/Images/Profile/" + user.Id + "/" + filename;
+                string imageUrl = "/Resources/Images/Profile/" + user.Id + "/" + filename;
 
                 if (!Directory.Exists(folderPath))
                 {
@@ -50,7 +50,7 @@
                 
             }
 
-            return this.RedirectToAction("User");
+            return this.RedirectToAction("UpdateProfile");
         }
 
         [HttpPost]
@@ -63,7 +63,7 @@
                 string filename = user.Id + ".jpg";
                 string folderPath = Server.MapPath("~/Resources/Images/Profile/" + user.Id);
                 string imagePath = folderPath + "/" + filename;
-                string imageUrl = "../Resources/Images/Profile/" + user.Id + "/" + filename;
+                string imageUrl = "/Resources/Images/Profile/" + user.Id + "/" + filename;
 
                 if (!Directory.Exists(folderPath))
                 {
@@ -85,7 +85,7 @@
                 this.TempData["Success"] = "Profile picture updated!";
             }
 
-            return this.RedirectToAction("User");
+            return this.RedirectToAction("UpdateProfile");
         }
     }
 }

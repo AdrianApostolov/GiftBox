@@ -219,17 +219,25 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Account\ManageController.cs" />
+    <Compile Include="Controllers\Institution\InstitutionController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="HtmlHelpers\Common.cs" />
+    <Compile Include="Infrastructure\Caching\ICacheService.cs" />
+    <Compile Include="Infrastructure\Caching\InMemoryCache.cs" />
+    <Compile Include="Infrastructure\HtmlHelpers\Common.cs" />
+    <Compile Include="Infrastructure\Populator\DropDownListPopulator.cs" />
+    <Compile Include="Infrastructure\Populator\IDropDownListPopulator.cs" />
     <Compile Include="ViewModels\Account\AccountViewModels.cs" />
     <Compile Include="ViewModels\Account\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Account\UpdateProfileViewModel.cs" />
     <Compile Include="ViewModels\Account\UserViewModel.cs" />
+    <Compile Include="ViewModels\Institution\AddInstitutionViewModel.cs" />
+    <Compile Include="ViewModels\Institution\DetailsInstitutionViewModel.cs" />
+    <Compile Include="ViewModels\LocationViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -316,7 +324,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Settings\User.cshtml" />
+    <Content Include="Views\Settings\UpdateProfile.cshtml" />
+    <Content Include="Views\Institution\Create.cshtml" />
+    <Content Include="Views\Institution\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

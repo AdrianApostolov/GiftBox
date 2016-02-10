@@ -1,0 +1,52 @@
+﻿@model GiftBox.Web.ViewModels.Institution.DetailsInstitutionViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="profile-page-header" class="card">
+    <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src=@Model.ImageUrl height="200px;" alt="user background">
+    </div>
+    <figure class="card-profile-image">
+        <img src=@Model.HomeAdministrator.ImageUrl alt="profile image" class="circle z-depth-2 responsive-img activator">
+    </figure>
+    <div class="card-content">
+        <div class="row">
+            <div class="col s3 offset-s2">
+                <h4 class="card-title grey-text text-darken-4"><a href="~/Settings/UpdateProfile/@Model.HomeAdministrator.Id">@Model.HomeAdministrator.FirstName @Model.HomeAdministrator.LastName</a></h4>
+                <p class="medium-small grey-text">Home Administrator</p>
+            </div>
+            <div class="col s2 center-align">
+                <h4 class="card-title grey-text text-darken-4">@Model.Name</h4>
+                <p class="medium-small grey-text">Home Name</p>
+            </div>
+            <div class="col s2 center-align">
+                <h4 class="card-title grey-text text-darken-4">@Model.Location.Country</h4>
+                <p class="medium-small grey-text">Country</p>
+            </div>
+            <div class="col s2 center-align">
+                <h4 class="card-title grey-text text-darken-4">@Model.Location.City</h4>
+                <p class="medium-small grey-text">City</p>
+            </div>
+            <div class="col s1 right-align">
+                <a class="btn activator waves-effect waves-light deep-purple accent-2 right">
+                    More Info
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-reveal" style="display: none; transform: translateY(0px);">
+        <p>
+            <span class="card-title grey-text text-darken-4"> @Model.Name<i class="mdi-navigation-close right"></i></span>
+            <span><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> @Model.HomeAdministrator.FirstName @Model.HomeAdministrator.LastName</span>
+        </p>
+
+        <p>@Model.AditionalInfo</p>
+
+        <p><i class="mdi-action-perm-phone-msg cyan-text text-darken-2"></i> @Model.PhoneNumber</p>
+        <p><i class="mdi-communication-email cyan-text text-darken-2"></i> @Model.HomeAdministrator.Email</p>
+        <p><i class="mdi-communication-location-on cyan-text text-darken-2"></i> @Model.Location.Address</p>
+        <p><i class="mdi-maps-local-post-office cyan-text text-darken-2"></i> @Model.Location.PostCode</p>
+        <p><i class="mdi-action-perm-contact-cal` cyan-text text-darken-2"></i> @Model.ContactInfo</p>
+    </div>
+</div>
