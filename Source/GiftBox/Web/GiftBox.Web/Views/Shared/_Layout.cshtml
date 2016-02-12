@@ -6,8 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    <link href="http://demo.geekslabs.com/materialize/v3.1/js/plugins/animate-css/animate.css" rel="stylesheet"/>
 </head>
 <body>
     <nav style="height: 50px; line-height: 50px;">
@@ -15,16 +17,38 @@
             <a href="#!" class="brand-logo center">Gift BOX</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="left hide-on-med-and-down">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new {})</li>
+                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { })</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { })</li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { })</li>
+                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { })</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { })</li>
+                <li><a href=@Url.Action("Details", "Institution", new {area = "HomeAdministration"})>Home Profile</a></li>
+                <li><a href=@Url.Action("Index", "Institution", new {area = "HomeAdministration"})>Manage</a></li>
+                <li><a href=@Url.Action("Create", "Institution", new {area = "HomeAdministration"})>Create</a></li>
             </ul>
             @Html.Partial("_LoginPartial")
+            @if (User.IsInRole("HomeAdministrator") && User.Identity.IsAuthenticated)
+            {
+                <ul class="right hide-on-med-and-down col col s8 m8 l8">
+                    <li>
+                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#\" data-activates="profile-dropdown">Manage Home<i style="position:relative; top:-15px" class="mdi-navigation-arrow-drop-down right "></i></a>
+                        <ul id="profile-dropdown" class="dropdown-content active" style="display: none;">
+                            <li>
+                                <a href=@Url.Action("Details", "Institution", new {area = "HomeAdministration"})><i class="mdi-action-home"></i>Profile</a>
+                            </li>
+                            <li>
+                                <a href=@Url.Action("", "Institution", new {area = "HomeAdministration"})><i class="mdi-action-settings"></i>Manage</a>
+                            </li>
+                            <li>
+                                <a href=@Url.Action("Create", "Institution", new {area = "HomeAdministration"})><i class="mdi-content-create"></i>Create</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            }
         </div>
     </nav>
     <div class="container body-content">
@@ -34,8 +58,6 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>

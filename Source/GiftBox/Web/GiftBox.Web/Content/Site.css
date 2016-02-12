@@ -7,6 +7,34 @@
     cursor: pointer;
     margin: 0;
 }
-.circle {
-    border-radius: 10px;
+img.circle {
+    border-radius: 10px !important;
+}
+.profile-btn {
+    margin-right: -18px !important;
+}
+
+.collection .collection-item.avatar .circle {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 300;
+    padding: 10px;
+}
+
+#btn-comment {
+    margin-top: 35px;
+    margin-left: 15px;
+}
+
+img.emoji {  
+  margin: 0px !important;
+  display: inline !important;
 }

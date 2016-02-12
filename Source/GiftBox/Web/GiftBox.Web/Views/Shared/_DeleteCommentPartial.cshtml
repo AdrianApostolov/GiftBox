@@ -1,0 +1,9 @@
+﻿@if (User.Identity.IsAuthenticated && User.Identity.Name == Model.AuthorName)
+{
+        @Ajax.ActionLink("Delete", "Delete", "Comments", new { id = Model.Id }, new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "comments"
+    }, new { @class = "right", style = "color: red" })
+}

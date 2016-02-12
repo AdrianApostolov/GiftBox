@@ -9,11 +9,15 @@ namespace GiftBox.Data.Models
 
         public string Content { get; set; }
 
-        public int NeedId { get; set; }
+        public int? NeedId { get; set; }
 
         public virtual Need Need { get; set; }
 
-        public int UserId { get; set; }
+        public int? HomeId { get; set; }
+
+        public virtual Home Home { get; set; }
+
+        public string UserId { get; set; }
 
         public virtual User User { get; set; }
         

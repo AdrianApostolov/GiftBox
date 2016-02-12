@@ -1,0 +1,7 @@
+﻿@model IEnumerable<GiftBox.Web.ViewModels.Comments.CommentViewModel>
+
+@foreach (var comment in Model)
+{
+   @Html.Partial(GiftBox.Common.GlobalConstants.SingleCommentPartial, comment)
+}
+

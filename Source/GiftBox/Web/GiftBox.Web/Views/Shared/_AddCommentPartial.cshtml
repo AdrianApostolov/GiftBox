@@ -1,0 +1,29 @@
+﻿@using GiftBox.Web.Infrastructure.HtmlHelpers
+@model GiftBox.Web.ViewModels.Comments.AddCommentViewModel
+
+@using (Ajax.BeginForm("AddComment", "Comments",
+                    new AjaxOptions
+                    {
+                        HttpMethod = "POST",
+                        InsertionMode = InsertionMode.InsertBefore,
+                        UpdateTargetId = "comments",
+                    }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.HomeId)
+    <div class="row">
+        <div class="input-field col offset-s1 s8">
+            <i class="mdi-communication-chat prefix"></i>
+            @Html.TextAreaFor(m => m.Content, new {@class = "materialize-textarea", length = "500"})
+            @Html.ValidationMessageFor(model => model.Content, "", new {style = "color: red"})
+            @Html.LabelFor(m => m.Content)
+        </div>
+        <div class="">
+            @Html.Submit("Comment", new { @class = "btn light-blue", id="btn-comment" })
+        </div>
+    </div>
+}
+@*<script>
+    $('#btn-comment').click(function() { $('.materialize-textarea').val('') });
+</script>*@

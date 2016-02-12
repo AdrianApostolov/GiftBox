@@ -34,9 +34,9 @@
             if (file != null)
             {
                 string filename = Path.GetFileName(file.FileName);
-                string folderPath = Server.MapPath("~/Resources/Images/Profile/" + user.Id);
+                string folderPath = Server.MapPath(GlobalConstants.ImageFolderPathPrefix + user.Id);
                 string imagePath = folderPath + "/" + filename;
-                string imageUrl = "/Resources/Images/Profile/" + user.Id + "/" + filename;
+                string imageUrl = GlobalConstants.ImageUrlPrefix + user.Id + "/" + filename;
 
                 if (!Directory.Exists(folderPath))
                 {
@@ -60,10 +60,10 @@
 
             if (this.Request.InputStream != null)
             {
-                string filename = user.Id + ".jpg";
-                string folderPath = Server.MapPath("~/Resources/Images/Profile/" + user.Id);
+                string filename = user.Id + GlobalConstants.CaptureImageExtention;
+                string folderPath = Server.MapPath(GlobalConstants.ImageFolderPathPrefix + user.Id);
                 string imagePath = folderPath + "/" + filename;
-                string imageUrl = "/Resources/Images/Profile/" + user.Id + "/" + filename;
+                string imageUrl = GlobalConstants.ImageUrlPrefix + user.Id + "/" + filename;
 
                 if (!Directory.Exists(folderPath))
                 {
@@ -82,7 +82,7 @@
 
                 user.ImageUrl = imageUrl;
                 this.users.Update();
-                this.TempData["Success"] = "Profile picture updated!";
+                this.TempData["Success"] = GlobalConstants.UpdateImageMessage;
             }
 
             return this.RedirectToAction("UpdateProfile");

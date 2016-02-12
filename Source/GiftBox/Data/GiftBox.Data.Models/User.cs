@@ -24,6 +24,8 @@
         [StringLength(50), MinLength(2)]
         public string LastName { get; set; }
 
+        public int HomeId { get; set; }
+
         public string UserRole { get; set; }
 
         public string ImageUrl { get; set; }

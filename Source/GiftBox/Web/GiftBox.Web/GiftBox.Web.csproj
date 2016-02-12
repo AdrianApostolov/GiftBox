@@ -214,9 +214,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
+    <Compile Include="Areas\HomeAdministration\Controllers\InstitutionController.cs" />
+    <Compile Include="Areas\HomeAdministration\HomeAdministrationAreaRegistration.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\Account\SettingsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\Comments\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Account\ManageController.cs" />
     <Compile Include="Controllers\Institution\InstitutionController.cs" />
@@ -235,6 +238,8 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Account\UpdateProfileViewModel.cs" />
     <Compile Include="ViewModels\Account\UserViewModel.cs" />
+    <Compile Include="ViewModels\Comments\AddCommentViewModel.cs" />
+    <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
     <Compile Include="ViewModels\Institution\AddInstitutionViewModel.cs" />
     <Compile Include="ViewModels\Institution\DetailsInstitutionViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
@@ -274,10 +279,13 @@
     <Content Include="font\roboto\Roboto-Thin.ttf" />
     <Content Include="font\roboto\Roboto-Thin.woff" />
     <Content Include="font\roboto\Roboto-Thin.woff2" />
+    <Content Include="Areas\HomeAdministration\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -327,12 +335,22 @@
     <Content Include="Views\Settings\UpdateProfile.cshtml" />
     <Content Include="Views\Institution\Create.cshtml" />
     <Content Include="Views\Institution\Details.cshtml" />
+    <Content Include="Views\Shared\_AddCommentPartial.cshtml" />
+    <Content Include="Views\Shared\_SingleCommentPartial.cshtml" />
+    <Content Include="Views\Shared\_DeleteCommentPartial.cshtml" />
+    <Content Include="Views\Shared\_PageCommentsPartial.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CommentDateCreated.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CommentContent.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CommentAuthor.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CommentAuthorPrefix.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\HomeAdministration\Models\" />
+    <Folder Include="Areas\HomeAdministration\Views\Institution\" />
+    <Folder Include="Areas\HomeAdministration\Views\Shared\" />
     <Folder Include="Resources\Images\Profile\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\Shared\DisplayTemplates\" />
+    <Folder Include="Views\Comments\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
