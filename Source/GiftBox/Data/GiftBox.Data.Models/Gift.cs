@@ -3,6 +3,9 @@
     using System;
     using GiftBox.Data.Common.Models;
 
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Gift : AuditInfo, IDeletableEntity
     {
         public int Id { get; set; }
@@ -17,13 +20,17 @@
 
         public bool Claimed { get; set; }
 
-        public string CalimedById { get; set; } 
+        public string ClaimedById { get; set; } 
 
-        public virtual User CalimedBy { get; set; }
+        public virtual User ClaimedBy { get; set; }
 
         public  int ChildId { get; set; }
 
         public virtual Child Child { get; set; }
+
+        public int EventCategoryId { get; set; }
+
+        public EventCategory EventCategory { get; set; }
 
         public bool IsDeleted { get; set; }
 

@@ -18,6 +18,8 @@ namespace GiftBox.Data.Migrations
         {
             DataSeeder.SeedRoles(context);
             DataSeeder.SeedAdmin(context);
+            DataSeeder.SeedNeedsCategories(context);
+            DataSeeder.SeedEventCategories(context);
         }
     }
 }

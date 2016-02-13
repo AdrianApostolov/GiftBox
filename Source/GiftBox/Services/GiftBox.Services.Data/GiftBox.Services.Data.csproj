@@ -58,12 +58,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryService.cs" />
+    <Compile Include="ChildService.cs" />
     <Compile Include="CommentService.cs" />
     <Compile Include="Contracts\ICategoryService.cs" />
+    <Compile Include="Contracts\IChildService.cs" />
     <Compile Include="Contracts\ICommentService.cs" />
+    <Compile Include="Contracts\IGiftService.cs" />
     <Compile Include="Contracts\IHomeService.cs" />
     <Compile Include="Contracts\ILocationService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
+    <Compile Include="GiftService.cs" />
     <Compile Include="HomeService.cs" />
     <Compile Include="LocationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

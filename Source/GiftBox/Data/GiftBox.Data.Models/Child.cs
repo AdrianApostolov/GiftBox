@@ -1,18 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GiftBox.Data.Models
 {
-    using System.Collections.Generic;
     using GiftBox.Data.Common.Models;
 
     public class Child : AuditInfo, IDeletableEntity
     {
+        private ICollection<Gift> gifts;
+
         public Child()
         {
             this.gifts = new HashSet<Gift>();
         }
-
-        private ICollection<Gift> gifts;
 
         public int Id { get; set; }
 
@@ -24,24 +24,16 @@ namespace GiftBox.Data.Models
 
         public virtual Home Home { get; set; }
 
-        public bool IsFulFilled { get; set; }
-
         public string ImageUrl { get; set; }
 
-        public string IBAN { get; set; }
-
-        public string BIC { get; set; }
-
-        public string AccountHolder { get; set; }
-        
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
 
-        public virtual ICollection<Gift> Gifts
+        public ICollection<Gift> Gifts
         {
             get { return this.gifts; }
             set { this.gifts = value; }
-        }
+        } 
     }
 }

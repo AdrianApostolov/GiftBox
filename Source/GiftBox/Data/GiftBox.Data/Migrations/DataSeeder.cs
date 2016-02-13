@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.Linq;
 using GiftBox.Common;
 using GiftBox.Data.Models;
 using Microsoft.AspNet.Identity;
@@ -54,6 +56,37 @@ namespace GiftBox.Data.Migrations
             roleManager.Create(new IdentityRole { Name = GlobalConstants.UserRole });
 
             context.SaveChanges();
+        }
+
+        internal static void SeedNeedsCategories(GiftBoxDbContext context)
+        {
+            if (!context.NeedCategorys.Any())
+            {
+                    var needCategories = new List<NeedCategory>()
+                {
+                    new NeedCategory() {Name = "Food"},
+                    new NeedCategory() { Name = "Мedicaments" },
+                    new NeedCategory() { Name = "Building Materials" }
+                };
+
+                context.NeedCategorys.AddOrUpdate(needCategories.ToArray());
+                context.SaveChanges();
+            }
+        }
+
+        internal static void SeedEventCategories(GiftBoxDbContext context)
+        {
+            if (!context.EventCategorys.Any())
+            {
+                    var eventCategories = new List<EventCategory>()
+                {
+                    new EventCategory() { Name = "Christmas" },
+                    new EventCategory() { Name = "Birthday" }
+                };
+
+                context.EventCategorys.AddOrUpdate(eventCategories.ToArray());
+                context.SaveChanges();
+            }
         }
     }
 }

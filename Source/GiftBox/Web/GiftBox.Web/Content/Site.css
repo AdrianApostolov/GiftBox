@@ -38,3 +38,7 @@ img.emoji {
   margin: 0px !important;
   display: inline !important;
 }
+
+.tabs {
+    overflow-x: hidden !important;
+}

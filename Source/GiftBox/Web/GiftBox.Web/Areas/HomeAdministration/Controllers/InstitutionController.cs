@@ -65,8 +65,9 @@
                 this.locations.Add(home.Location);
                 this.homes.Add(home);
                 this.CurrentUser.HomeId = home.Id;
+                this.users.Update();
                 this.TempData["Success"] = GlobalConstants.CreateHomeMessage;
-                return this.RedirectToAction("Details", new { id = home.Id });
+                return this.RedirectToAction("Details", new { id = home.Id, area = "" });
             }
             return this.View(model);
         }
