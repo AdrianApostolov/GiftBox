@@ -59,7 +59,7 @@ namespace GiftBox.Web.Infrastructure.Populators
                           },
                     };
 
-                    categoriesList.AddRange(this.categories.GeEventCategories()
+                    categoriesList.AddRange(this.categories.GetEventCategories()
                        .Select(c => new SelectListItem
                        {
                            Value = c.Id.ToString(),

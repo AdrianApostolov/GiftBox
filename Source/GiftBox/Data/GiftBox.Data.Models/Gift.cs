@@ -24,13 +24,13 @@
 
         public virtual User ClaimedBy { get; set; }
 
-        public  int ChildId { get; set; }
+        public int ChildId { get; set; }
 
         public virtual Child Child { get; set; }
 
         public int EventCategoryId { get; set; }
 
-        public EventCategory EventCategory { get; set; }
+        public virtual EventCategory EventCategory { get; set; }
 
         public bool IsDeleted { get; set; }
 

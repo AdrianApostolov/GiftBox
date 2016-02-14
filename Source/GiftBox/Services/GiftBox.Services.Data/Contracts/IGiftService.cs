@@ -6,5 +6,13 @@
     public interface IGiftService
     {
         IQueryable<Gift> GetAll();
+
+        Gift GetById(int id);
+
+        void Add(Gift gift);
+
+        void Delete(int id);
+
+        void Update(Gift gift);
     }
 }

@@ -27,7 +27,7 @@ namespace GiftBox.Data.Models
 
         public int NeedCategoryId { get; set; }
 
-        public NeedCategory NeedCategory { get; set; }
+        public virtual NeedCategory NeedCategory { get; set; }
 
         public string ImageUrl { get; set; }
 

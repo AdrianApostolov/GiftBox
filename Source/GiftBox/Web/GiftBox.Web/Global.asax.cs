@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Web.Http;
 using GiftBox.Web.Infrastructure.Mapping;
 
 namespace GiftBox.Web
@@ -14,7 +15,7 @@ namespace GiftBox.Web
         {
             (new ViewEnginesConfig()).RegisterViewEngines();
             (new AutoMapperConfig(Assembly.GetExecutingAssembly())).Execute();
-
+           
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

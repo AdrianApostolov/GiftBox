@@ -102,6 +102,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -219,13 +220,22 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\HomeAdministration\Controllers\ChildController.cs" />
+    <Compile Include="Areas\HomeAdministration\Controllers\GiftsController.cs" />
     <Compile Include="Areas\HomeAdministration\Controllers\InstitutionController.cs" />
     <Compile Include="Areas\HomeAdministration\Controllers\ManageController.cs" />
+    <Compile Include="Areas\HomeAdministration\Controllers\NeedsController.cs" />
     <Compile Include="Areas\HomeAdministration\HomeAdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\HomeAdministration\ViewModels\Categories\DisplayEventCategoryViewModel.cs" />
+    <Compile Include="Areas\HomeAdministration\ViewModels\Categories\DisplayNeedCategoryViewModel.cs" />
     <Compile Include="Areas\HomeAdministration\ViewModels\Children\AddChildViewModel.cs" />
     <Compile Include="Areas\HomeAdministration\ViewModels\Children\DisplayChildViewModel.cs" />
     <Compile Include="Areas\HomeAdministration\ViewModels\Children\EditChildViewModel.cs" />
+    <Compile Include="Areas\HomeAdministration\ViewModels\Gift\AddGiftViewModel.cs" />
     <Compile Include="Areas\HomeAdministration\ViewModels\Gift\DisplayGiftViewModel.cs" />
+    <Compile Include="Areas\HomeAdministration\ViewModels\Gift\EditGiftViewModel.cs" />
+    <Compile Include="Areas\HomeAdministration\ViewModels\Needs\AddNeedViewModel.cs" />
+    <Compile Include="Areas\HomeAdministration\ViewModels\Needs\DisplayNeedViewModel.cs" />
+    <Compile Include="Areas\HomeAdministration\ViewModels\Needs\EditNeedViewModel.cs" />
     <Compile Include="Controllers\Account\AccountController.cs" />
     <Compile Include="Controllers\Account\SettingsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -432,11 +442,12 @@
     <Content Include="Views\Shared\DisplayTemplates\CommentAuthor.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CommentAuthorPrefix.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ChildrenDropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EventCategoryDropDown.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\NeedCategoryDropDown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Resources\Images\Profile\" />
-    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

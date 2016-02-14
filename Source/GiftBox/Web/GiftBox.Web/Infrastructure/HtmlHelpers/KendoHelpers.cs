@@ -10,8 +10,9 @@
     public static class KendoHelpers
     {
         public static GridBuilder<T> FullFeaturedGrid<T>(this HtmlHelper helper, string gridName,
-            string readControllerName, string controllerName, Expression<Func<T, int>> modelIdExpression,
+            string readControllerName, string controllerName,
             string readMethod, string createMethod, string updateMethod, string destroyMethod,
+            Action<DataSourceModelDescriptorFactory<T>> factory,
             Action<GridColumnFactory<T>> columns = null) where T : class
         {
             if (columns == null)
@@ -21,9 +22,8 @@
                     cols.AutoGenerate(true);
                     cols.Command(command =>
                     {
-                        command.Edit();
                         command.Destroy();
-                    }).Width(150);
+                    }).Width(120);
                 };
             }
 
@@ -31,22 +31,26 @@
                 .Grid<T>()
                 .Name(gridName)
                 .Columns(columns)
-                .ColumnMenu()
-                .Pageable(page => page.Refresh(true))
+                .ToolBar(toolbar =>
+                {
+                    toolbar.Create();
+                    toolbar.Save();
+                })
+                .Editable(editable => editable.Mode(GridEditMode.InCell))
+                .Pageable()
                 .Sortable()
-                .Groupable()
-                .Filterable()
-                .Editable(edit => edit.Mode(GridEditMode.PopUp))
-                .ToolBar(toolbar => toolbar.Create())
-                .DataSource(data =>
-                    data
-                        .Ajax()
-                        .PageSize(5)
-                        .Model(m => m.Id(modelIdExpression))
-                        .Read(read => read.Action(readMethod, readControllerName))
-                        .Create(create => create.Action(createMethod, controllerName))
-                        .Update(update => update.Action(updateMethod, controllerName))
-                        .Destroy(destroy => destroy.Action(destroyMethod, controllerName)));
+                .Scrollable() 
+                .DataSource(dataSource => dataSource
+                    .Ajax()
+                    .Batch(true)
+                    .ServerOperation(false)
+                    .PageSize(5)
+                    .Events(events => events.Error("error_handler"))
+                    .Model(factory)
+                    .Read(read => read.Action(readMethod, readControllerName))
+                    .Create(create => create.Action(createMethod, controllerName))
+                    .Update(update => update.Action(updateMethod, controllerName))
+                    .Destroy(destroy => destroy.Action(destroyMethod, controllerName)));
         }
     }
 }

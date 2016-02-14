@@ -23,7 +23,7 @@ namespace GiftBox.Services.Data
             return this.needCategories.All();
         }
 
-        public IQueryable<EventCategory> GeEventCategories()
+        public IQueryable<EventCategory> GetEventCategories()
         {
             return this.eventCategories.All();
         }

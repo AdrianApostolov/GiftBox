@@ -2,6 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using AutoMapper;
+using GiftBox.Web.Areas.HomeAdministration.ViewModels.Categories;
+using GiftBox.Web.Areas.HomeAdministration.ViewModels.Children;
+using Glimpse.Core.Extensions;
 
 namespace GiftBox.Web.Areas.HomeAdministration.ViewModels.Gift
 {
@@ -30,21 +33,21 @@ namespace GiftBox.Web.Areas.HomeAdministration.ViewModels.Gift
 
         [HiddenInput(DisplayValue = false)]
         public string ClaimedBy { get; set; }
-
-        [ScaffoldColumn(false)]
+        
         public int? ChildId { get; set; }
 
-        [ScaffoldColumn(false)]
-        public int EventCategoryId { get; set; }
+        [UIHint("ChildrenDropDown")]
+        public DisplayChildViewModel Child { get; set; }
+        
+        public int? EventCategoryId { get; set; }
 
-        [HiddenInput(DisplayValue = false)]
-        public string EventCategoryName { get; set; }
+        [UIHint("EventCategoryDropDown")]
+        public DisplayEventCategoryViewModel EventCategory { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Gift, DisplayGiftViewModel>()
-                .ForMember(m => m.ClaimedBy, opt => opt.MapFrom(x => x.ClaimedBy.UserName))
-                .ForMember(m => m.EventCategoryName, opt => opt.MapFrom(x => x.EventCategory.Name));
+                .ForMember(m => m.ClaimedBy, opt => opt.MapFrom(x => x.ClaimedBy.UserName));
         }
     }
 }

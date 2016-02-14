@@ -4,95 +4,97 @@
     ViewBag.Title = "User";
 }
 
-<div class="card-panel">
-    <h3 class="center">Profile</h3>
+<div class="container">
+    <div class="card-panel">
+        <h3 class="center">Profile</h3>
 
-    <div class="row">
-        <div class="col s6 m5 hoverable">
-            <div class="card">
-                <div class="card-image">
-                    <img src=@Model.ImageUrl>
-                    <span class="card-title">Profile picture</span>
-                </div>
-                <div class="card-action">
-                    @Html.ActionLink("Change password", "Index", "Manage")
+        <div class="row">
+            <div class="col s6 m5 hoverable">
+                <div class="card">
+                    <div class="card-image">
+                        <img src=@Model.ImageUrl>
+                        <span class="card-title">Profile picture</span>
+                    </div>
+                    <div class="card-action">
+                        @Html.ActionLink("Change password", "Index", "Manage")
+                    </div>
                 </div>
             </div>
+            <div class="col s6">
+                <ul id="profile-page-about-details" class="collection z-depth-1 hoverable">
+                    <li class="collection-item">
+                        <div class="row">
+                            <div class="col s5 grey-text darken-1">
+                                <i class="mdi-action-account-circle"></i> Name
+                            </div>
+                            <div class="col s7 grey-text text-darken-4 right-align">@Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)</div>
+                        </div>
+                    </li>
+                    <li class="collection-item">
+                        <div class="row">
+                            <div class="col s5 grey-text darken-1">
+                                <i class="mdi-communication-email"></i> E-mail
+                            </div>
+                            <div class="col s7 grey-text text-darken-4 right-align">@Html.DisplayFor(m => m.Email)</div>
+                        </div>
+                    </li>
+                    <li class="collection-item">
+                        <div class="row">
+                            <div class="col s5 grey-text darken-1">
+                                <i class="mdi-communication-phone"></i> Phone number
+                            </div>
+                            <div class="col s7 grey-text text-darken-4 right-align">@Html.DisplayFor(m => m.PhoneNumber)</div>
+                        </div>
+                    </li>
+                    <li class="collection-item">
+                        <div class="row">
+                            <div class="col s5 grey-text darken-1">
+                                <i class="mdi-av-timer"></i> Joined on
+                            </div>
+                            <div class="col s7 grey-text text-darken-4 right-align">@Html.DisplayFor(m => m.CreatedOn)</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            @using (Html.BeginForm("UpdateProfile", "Settings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="col s5 offset-s1">
+                    <div class="row center">
+                        <div class="file-field input-field">
+                            <div class="col s6">
+                                <input class="file-path validate valid" type="text">
+                                <label for="Image">Profile picture</label>
+                            </div>
+                            <div class="col s1">
+                                <span class="btn-floating">
+                                    <i class="mdi-image-photo-camera"></i>
+                                    <input type="file" name="File" id="File" />
+                                </span>
+                            </div>
+                            <div class="col s1" style="margin-left: 10px;">
+                                @Html.Submit("Upload")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center">
+                        <a class="waves-effect waves-light btn modal-trigger deep-purple accent-2" href="#modal1">Snapshot!</a>
+                    </div>
+                </div>
+            }
         </div>
-        <div class="col s6">
-            <ul id="profile-page-about-details" class="collection z-depth-1 hoverable">
-                <li class="collection-item">
-                    <div class="row">
-                        <div class="col s5 grey-text darken-1">
-                            <i class="mdi-action-account-circle"></i> Name
-                        </div>
-                        <div class="col s7 grey-text text-darken-4 right-align">@Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)</div>
+
+        <div class="row">
+            <div id="modal1" class="modal col offset-s2 s4">
+                <div class="modal-content">
+                    <h3 class="center">Take a picture</h3>
+                    <div class="center" style="margin-bottom: 10px;">
+                        <input type="button" class="btn deep-purple accent-2" value="Shoot!" onclick="webcam.capture();" />
                     </div>
-                </li>
-                <li class="collection-item">
-                    <div class="row">
-                        <div class="col s5 grey-text darken-1">
-                            <i class="mdi-communication-email"></i> E-mail
-                        </div>
-                        <div class="col s7 grey-text text-darken-4 right-align">@Html.DisplayFor(m => m.Email)</div>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div class="row">
-                        <div class="col s5 grey-text darken-1">
-                            <i class="mdi-communication-phone"></i> Phone number
-                        </div>
-                        <div class="col s7 grey-text text-darken-4 right-align">@Html.DisplayFor(m => m.PhoneNumber)</div>
-                    </div>
-                </li>
-                <li class="collection-item">
-                    <div class="row">
-                        <div class="col s5 grey-text darken-1">
-                            <i class="mdi-av-timer"></i> Joined on
-                        </div>
-                        <div class="col s7 grey-text text-darken-4 right-align">@Html.DisplayFor(m => m.CreatedOn)</div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        @using (Html.BeginForm("UpdateProfile", "Settings", FormMethod.Post, new {enctype = "multipart/form-data"}))
-        {
-            <div class="col s5 offset-s1">
-                <div class="row center">
-                    <div class="file-field input-field">
-                        <div class="col s6">
-                            <input class="file-path validate valid" type="text">
-                            <label for="Image">Profile picture</label>
-                        </div>
-                        <div class="col s1">
-                            <span class="btn-floating">
-                                <i class="mdi-image-photo-camera"></i>
-                                <input type="file" name="File" id="File" />
-                            </span>
-                        </div>
-                        <div class="col s1" style="margin-left: 10px;">
-                            @Html.Submit("Upload")
-                        </div>
-                    </div>
+                    <div class="center" id="Camera"></div>
                 </div>
-                <div class="center">
-                    <a class="waves-effect waves-light btn modal-trigger deep-purple accent-2" href="#modal1">Snapshot!</a>
+                <div class="modal-footer">
+                    <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
                 </div>
-            </div>
-        }
-    </div>
-   
-    <div class="row">
-        <div id="modal1" class="modal col offset-s2 s4">
-            <div class="modal-content">
-                <h3 class="center">Take a picture</h3>
-                <div class="center" style="margin-bottom: 10px;">
-                    <input type="button" class="btn deep-purple accent-2" value="Shoot!" onclick="webcam.capture();" />
-                </div>
-                <div class="center" id="Camera"></div>
-            </div>
-            <div class="modal-footer">
-                <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
             </div>
         </div>
     </div>

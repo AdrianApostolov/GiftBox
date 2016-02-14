@@ -14,7 +14,10 @@ using AutoMapper;
         [Display(Name = "Home Name")]
         [HiddenInput(DisplayValue = false)]
         public string HomeName { get; set; }
-        
+
+        [HiddenInput(DisplayValue = false)]
+        public int HomeId { get; set; }
+
         public string Name { get; set; }
     
         public int Age { get; set; }
@@ -23,6 +26,11 @@ using AutoMapper;
         {
             configuration.CreateMap<Child, DisplayChildViewModel>()
                 .ForMember(m => m.HomeName, opt => opt.MapFrom(x => x.Home.Name));
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 }

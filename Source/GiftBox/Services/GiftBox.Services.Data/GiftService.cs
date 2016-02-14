@@ -21,5 +21,30 @@
 
             return allGifts;
         }
+
+        public Gift GetById(int id)
+        {
+            var gift = this.gifts.GetById(id);
+
+            return gift;
+        }
+
+        public void Add(Gift gift)
+        {
+            this.gifts.Add(gift);
+            this.gifts.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            this.gifts.Delete(id);
+            this.gifts.SaveChanges();
+        }
+
+        public void Update(Gift gift)
+        {
+            this.gifts.Update(gift);
+            this.gifts.SaveChanges();
+        }
     }
 }

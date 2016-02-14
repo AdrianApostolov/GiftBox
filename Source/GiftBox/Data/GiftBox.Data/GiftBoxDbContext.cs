@@ -15,6 +15,7 @@
         public GiftBoxDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            Configuration.ProxyCreationEnabled = false; 
         }
         
         public new IDbSet<T> Set<T>() where T : class

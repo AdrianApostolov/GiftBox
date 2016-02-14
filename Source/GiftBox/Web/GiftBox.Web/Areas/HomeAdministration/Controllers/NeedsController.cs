@@ -1,47 +1,44 @@
 ﻿
-using System.Collections.Generic;
-using System.Linq;
+
+using AutoMapper;
 
 namespace GiftBox.Web.Areas.HomeAdministration.Controllers
 {
+    using System.Collections.Generic;
     using System.Web.Mvc;
-
-    using GiftBox.Web.Areas.HomeAdministration.ViewModels.Children;
-    using GiftBox.Web.Controllers;
     using GiftBox.Data.Models;
     using GiftBox.Services.Data.Contracts;
-
-    using AutoMapper;
-
+    using GiftBox.Web.Areas.HomeAdministration.ViewModels.Needs;
+    using GiftBox.Web.Controllers;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 
-    public class ChildController : BaseController
+    public class NeedsController : BaseController
     {
-        private readonly IChildService children;
+        private readonly INeedService needs;
 
-        public ChildController(IUsersService users, IChildService children)
+        public NeedsController(IUsersService users,INeedService needs)
             :base(users)
         {
-            this.children = children;
+            this.needs = needs;
         }
 
-        // GET: HomeAdministration/Child
+        // GET: HomeAdministration/Needs
         public ActionResult Index()
         {
             return View();
         }
-       
-        public ActionResult CreateChild([DataSourceRequest]DataSourceRequest request, IEnumerable<AddChildViewModel> models)
+
+        public ActionResult CreateNeed([DataSourceRequest]DataSourceRequest request, IEnumerable<AddNeedViewModel> models)
         {
-            var result = new List<AddChildViewModel>();
+            var result = new List<AddNeedViewModel>();
             if (this.ModelState.IsValid && models != null)
             {
                 foreach (var model in models)
                 {
-                    var dbModel = AutoMapper.Mapper.Map<Child>(model);
+                    var dbModel = AutoMapper.Mapper.Map<Need>(model);
                     dbModel.HomeId = this.CurrentUser.HomeId;
-                    this.children.Add(dbModel);
+                    this.needs.Add(dbModel);
                     result.Add(model);
                 }
 
@@ -50,17 +47,16 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
 
             return null;
         }
-       
-        public ActionResult UpdateChild([DataSourceRequest] DataSourceRequest request, IEnumerable<EditChildViewModel> models)
+
+        public ActionResult UpdateNeed([DataSourceRequest]DataSourceRequest request, IEnumerable<EditNeedViewModel> models)
         {
             if (this.ModelState.IsValid && models != null)
             {
                 foreach (var model in models)
                 {
-                    var dbModel = this.children.GetById(model.Id);
+                    var dbModel = this.needs.GetById(model.Id);
                     Mapper.Map(model, dbModel);
-                    this.children.Update(dbModel);
-
+                    this.needs.Update(dbModel);
                     return this.Json(new[] { model }.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
                 }
             }
@@ -68,14 +64,14 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
             return null;
         }
 
-        public ActionResult DeleteChild([DataSourceRequest] DataSourceRequest request, IEnumerable<DisplayChildViewModel> models)
+        public ActionResult DeleteNeed([DataSourceRequest] DataSourceRequest request, IEnumerable<DisplayNeedViewModel> models)
         {
-            var result = new List<DisplayChildViewModel>();
+            var result = new List<DisplayNeedViewModel>();
             if (models != null)
             {
                 foreach (var model in models)
                 {
-                    this.children.Delete(model.Id);
+                    this.needs.Delete(model.Id);
                     result.Add(model);
                 }
                 return this.Json(new[] { result }.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);

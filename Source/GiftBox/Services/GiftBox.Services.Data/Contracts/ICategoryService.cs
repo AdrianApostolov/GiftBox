@@ -7,6 +7,6 @@ namespace GiftBox.Services.Data.Contracts
     {
         IQueryable<NeedCategory> GetNeedCategories();
 
-        IQueryable<EventCategory> GeEventCategories();
+        IQueryable<EventCategory> GetEventCategories();
     }
 }

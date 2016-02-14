@@ -66,10 +66,12 @@
     <Compile Include="Contracts\IGiftService.cs" />
     <Compile Include="Contracts\IHomeService.cs" />
     <Compile Include="Contracts\ILocationService.cs" />
+    <Compile Include="Contracts\INeedService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="GiftService.cs" />
     <Compile Include="HomeService.cs" />
     <Compile Include="LocationService.cs" />
+    <Compile Include="NeedService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>

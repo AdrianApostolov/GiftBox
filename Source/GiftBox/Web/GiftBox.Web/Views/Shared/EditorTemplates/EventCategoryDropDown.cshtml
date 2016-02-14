@@ -1,0 +1,9 @@
+﻿@using System.Collections
+@using Kendo.Mvc.UI
+@model GiftBox.Web.Areas.HomeAdministration.ViewModels.Categories.DisplayEventCategoryViewModel
+
+@(Html.Kendo().DropDownListFor(m => m)
+        .DataValueField("Id")
+        .DataTextField("Name")
+        .BindTo((IEnumerable)ViewData["eventCategories"])
+)
