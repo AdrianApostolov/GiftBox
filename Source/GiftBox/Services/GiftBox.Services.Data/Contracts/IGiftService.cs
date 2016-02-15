@@ -5,7 +5,7 @@
 
     public interface IGiftService
     {
-        IQueryable<Gift> GetAll();
+        IQueryable<Gift> GetAll(int homeId);
 
         Gift GetById(int id);
 

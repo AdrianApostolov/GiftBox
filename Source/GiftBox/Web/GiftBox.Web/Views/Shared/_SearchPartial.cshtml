@@ -1,0 +1,13 @@
+﻿@using (Html.BeginForm("Index", null, FormMethod.Get))
+{
+    <div class="row" id="search-row">
+        <div class="input-field col offset-s3 s4">
+            <i class="mdi-action-search prefix"></i>
+            <input type="text" name="searchInput" id="searchInput" />
+            <label>Search by home name or city</label>
+        </div>
+        <div class="col s2">
+            <button id="btnSearch" class="btn btn-search deep-purple lighten-2">Search</button>
+        </div>
+    </div>
+}

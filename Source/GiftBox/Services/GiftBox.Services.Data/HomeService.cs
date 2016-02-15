@@ -15,6 +15,13 @@
             this.homes = homes;
         }
 
+        public IQueryable<Home> GetAll()
+        {
+            var allHomes = this.homes.All();
+
+            return allHomes;
+        }
+
         public IQueryable<Home> GetHomeById(int? id)
         {
             var home = this.homes

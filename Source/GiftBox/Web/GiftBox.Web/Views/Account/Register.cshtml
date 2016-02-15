@@ -7,66 +7,68 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="row">
-        <div class="col s8 offset-s2">
-            <div class="card-panel z-depth-4">
-                <h4 class="center">Register</h4>
-                @Html.ValidationSummary("", new { style = "color: red" })
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="mdi-action-account-circle prefix"></i>
-                        @Html.TextBoxFor(m => m.Username)
-                        @Html.LabelFor(m => m.Username)
+    <div class="container">
+        <div class="row">
+            <div class="col s8 offset-s2">
+                <div class="card-panel z-depth-4">
+                    <h4 class="center">Register</h4>
+                    @Html.ValidationSummary("", new { style = "color: red" })
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-account-circle prefix"></i>
+                            @Html.TextBoxFor(m => m.Username)
+                            @Html.LabelFor(m => m.Username)
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="mdi-communication-email prefix"></i>
+                            @Html.TextBoxFor(m => m.Email)
+                            @Html.LabelFor(m => m.Email)
+                        </div>
                     </div>
-                    <div class="input-field col s6">
-                        <i class="mdi-communication-email prefix"></i>
-                        @Html.TextBoxFor(m => m.Email)
-                        @Html.LabelFor(m => m.Email)
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-account-box prefix"></i>
+                            @Html.TextBoxFor(m => m.FirstName)
+                            @Html.LabelFor(m => m.FirstName)
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="mdi-action-account-box prefix"></i>
+                            @Html.TextBoxFor(m => m.LastName)
+                            @Html.LabelFor(m => m.LastName)
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="mdi-action-account-box prefix"></i>
-                        @Html.TextBoxFor(m => m.FirstName)
-                        @Html.LabelFor(m => m.FirstName)
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-communication-phone prefix"></i>
+                            @Html.TextBoxFor(m => m.PhoneNumber)
+                            @Html.LabelFor(m => m.PhoneNumber)
+                        </div>
+                        <div class="input-field col s6">
+                            <p>
+                                <input class="with-gap" name="UserRole" value="User" type="radio" id="user" />
+                                <label for="user">User</label>
+                            </p>
+                            <p>
+                                <input class="with-gap" name="UserRole" value="HomeAdministrator" type="radio" id="homeAdministrator" />
+                                <label for="homeAdministrator">Home Administrator</label>
+                            </p>
+                        </div>
                     </div>
-                    <div class="input-field col s6">
-                        <i class="mdi-action-account-box prefix"></i>
-                        @Html.TextBoxFor(m => m.LastName)
-                        @Html.LabelFor(m => m.LastName)
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-lock prefix"></i>
+                            @Html.PasswordFor(m => m.Password)
+                            @Html.LabelFor(m => m.Password)
+                        </div>
+                        <div class="input-field col s16">
+                            <i class="mdi-action-lock-outline prefix"></i>
+                            @Html.PasswordFor(m => m.ConfirmPassword)
+                            @Html.LabelFor(m => m.ConfirmPassword)
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="mdi-communication-phone prefix"></i>
-                        @Html.TextBoxFor(m => m.PhoneNumber)
-                        @Html.LabelFor(m => m.PhoneNumber)
+                    <div class="center col-s6">
+                        <input type="submit" class="btn pink" value="Register" />
                     </div>
-                    <div class="input-field col s6">
-                        <p>
-                            <input class="with-gap" name="UserRole" value="User" type="radio" id="user"/>
-                            <label for="user">User</label>
-                        </p>
-                        <p>
-                            <input class="with-gap" name="UserRole" value="HomeAdministrator" type="radio" id="homeAdministrator" />
-                            <label for="homeAdministrator">Home Administrator</label>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="mdi-action-lock prefix"></i>
-                        @Html.PasswordFor(m => m.Password)
-                        @Html.LabelFor(m => m.Password)
-                    </div>
-                    <div class="input-field col s16">
-                        <i class="mdi-action-lock-outline prefix"></i>
-                        @Html.PasswordFor(m => m.ConfirmPassword)
-                        @Html.LabelFor(m => m.ConfirmPassword)
-                    </div>
-                </div>
-                <div class="center col-s6">
-                    <input type="submit" class="btn pink" value="Register" />
                 </div>
             </div>
         </div>

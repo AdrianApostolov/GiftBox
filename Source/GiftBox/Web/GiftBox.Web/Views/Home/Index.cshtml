@@ -1,7 +1,16 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@using GiftBox.Common
+@using PagedList.Mvc;
+@model PagedList.IPagedList<GiftBox.Web.ViewModels.Institution.DetailsInstitutionViewModel>
 
-<div class="card-panel">
-    <h1>HOME</h1>
+@Html.Partial(GlobalConstants.SearchPartial)
+<div class="container center">
+    @Html.Partial(GlobalConstants.HomesListPartial, Model)
+    @Html.Partial(GlobalConstants.PagingPartial, Model)
+    <div id="ajax-search-results"></div>
 </div>
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+    @Scripts.Render("~/bundles/custom")
+}

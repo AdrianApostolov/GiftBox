@@ -5,6 +5,8 @@ namespace GiftBox.Services.Data.Contracts
 {
     public interface IHomeService
     {
+        IQueryable<Home> GetAll();
+
         IQueryable<Home> GetHomeById(int? id);
 
         void Add(Home home);

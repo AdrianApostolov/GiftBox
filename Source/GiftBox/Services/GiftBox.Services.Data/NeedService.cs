@@ -15,9 +15,11 @@ namespace GiftBox.Services.Data
             this.needs = needs;
         } 
 
-        public IQueryable<Need> GetAll()
+        public IQueryable<Need> GetAll(int homeId)
         {
-            var allNeeds = this.needs.All();
+            var allNeeds = this.needs
+                .All()
+                .Where(x => x.HomeId == homeId);
 
             return allNeeds;
         }

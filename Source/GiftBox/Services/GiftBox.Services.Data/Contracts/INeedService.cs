@@ -5,7 +5,7 @@
 
     public interface INeedService
     {
-        IQueryable<Need> GetAll();
+        IQueryable<Need> GetAll(int homeId);
 
         Need GetById(int id);
 

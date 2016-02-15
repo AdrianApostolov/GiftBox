@@ -2,6 +2,7 @@
 @model GiftBox.Web.ViewModels.Comments.AddCommentViewModel
 
 @using (Ajax.BeginForm("AddComment", "Comments",
+                    new { area = "" },
                     new AjaxOptions
                     {
                         HttpMethod = "POST",

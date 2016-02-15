@@ -28,6 +28,9 @@ namespace GiftBox.Web
                       "~/Scripts/materialize.min.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/custom")
+              .Include("~/Scripts/site.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/materialize.min.css",
                       "~/Content/site.css"));

@@ -15,9 +15,11 @@
             this.gifts = gifts;
         }
 
-        public IQueryable<Gift> GetAll()
+        public IQueryable<Gift> GetAll(int homeId)
         {
-            var allGifts = this.gifts.All();
+            var allGifts = this.gifts
+                .All()
+                .Where(x => x.Child.HomeId == homeId);
 
             return allGifts;
         }

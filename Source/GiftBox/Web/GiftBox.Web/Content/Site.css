@@ -42,3 +42,7 @@ img.emoji {
 .tabs {
     overflow-x: hidden !important;
 }
+
+#btnSearch {
+    margin-top: 25px;
+}

@@ -10,7 +10,6 @@
             submitButton.Attributes.Add("type", "submit");
             submitButton.Attributes.Add("value", value);
             submitButton.MergeAttributes(HtmlHelper.AnonymousObjectToHtmlAttributes(htmlAttributes));
-            submitButton.AddCssClass("btn btn-dark");
             return new MvcHtmlString(submitButton.ToString());
         }
     }

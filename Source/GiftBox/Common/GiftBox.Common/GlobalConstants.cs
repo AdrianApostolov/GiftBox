@@ -13,6 +13,7 @@
         public const string ImageUrlPrefix = "/Resources/Images/Profile/";
         public const string CaptureImageExtention = ".jpg";
 
+        public const string NoPagesFound = "No pages found!";
         public const string UpdateImageMessage = "Profile picture updated!";
         public const string CreateHomeMessage = "Home created successfully!";
 
@@ -20,6 +21,9 @@
         public const string DeleteCommentPartial = "_DeleteCommentPartial";
         public const string SingleCommentPartial = "_SingleCommentPartial";
         public const string PageCommentsPartial = "_PageCommentsPartial";
+        public const string HomesListPartial = "_HomesListPartial";
+        public const string PagingPartial = "_PagingPartial";
+        public const string SearchPartial = "_SearchPartial";
 
         public const string PageNotFound = "The page you're looking for wasn't found.";
         public const string InvalidComment = "Invalid comment";
