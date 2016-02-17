@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
-using AutoMapper;
+    using AutoMapper;
     using GiftBox.Data.Models;
     using GiftBox.Web.Infrastructure.Mapping;
 

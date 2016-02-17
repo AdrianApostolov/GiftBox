@@ -1,2 +1,2 @@
 # GiftBox
- ASP NET MVC 5 Application.
+ ASP NET MVC Application.

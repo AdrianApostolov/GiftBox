@@ -5,7 +5,7 @@
 
     public class ValidatePictureFileAttribute : BaseValidateMediaFileAttribute
     {
-        private readonly IList<string> allowedMimeTypes = new List<string>() { "image/jpeg", "image/png" };
+        private readonly IList<string> allowedMimeTypes = new List<string>() { "image/jpeg", "image/png", "image/jpg" };
 
         public override bool IsValid(object value)
         {

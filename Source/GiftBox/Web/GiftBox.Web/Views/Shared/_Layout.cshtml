@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/kendo/css")
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <link href="http://demo.geekslabs.com/materialize/v3.1/js/plugins/animate-css/animate.css" rel="stylesheet"/>
@@ -17,7 +18,8 @@
             <a href="#!" class="brand-logo center">Gift BOX</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="left hide-on-med-and-down">
-                <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { })</li>
+                <li>@Html.ActionLink("Home", "Index", "Home", new {area = ""}, new {})</li>
+                <li>@Html.ActionLink("Gifts", "All", "Gift", new { area = "" }, new { })</li>
                 <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { })</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { })</li>
             </ul>

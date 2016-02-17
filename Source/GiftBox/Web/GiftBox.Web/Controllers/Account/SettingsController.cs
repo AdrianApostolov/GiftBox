@@ -1,4 +1,6 @@
-﻿namespace GiftBox.Web.Controllers.Account
+﻿using GiftBox.Web.Infrastructure.Filters;
+
+namespace GiftBox.Web.Controllers.Account
 {
     using System.Web.Mvc;
     using System.IO;
@@ -26,6 +28,7 @@
         }
 
         [HttpPost]
+        [ValidatePictureFile]
         public ActionResult UpdateProfile(HttpPostedFileBase file, string id)
         {
 

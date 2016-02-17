@@ -227,7 +227,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
-    <Compile Include="Areas\HomeAdministration\Controllers\ChildController.cs" />
+    <Compile Include="Areas\HomeAdministration\Controllers\ChildsController.cs" />
     <Compile Include="Areas\HomeAdministration\Controllers\GiftsController.cs" />
     <Compile Include="Areas\HomeAdministration\Controllers\InstitutionController.cs" />
     <Compile Include="Areas\HomeAdministration\Controllers\ManageController.cs" />
@@ -248,6 +248,7 @@
     <Compile Include="Controllers\Account\SettingsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Comments\CommentsController.cs" />
+    <Compile Include="Controllers\GiftController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Account\ManageController.cs" />
     <Compile Include="Controllers\Institution\InstitutionController.cs" />
@@ -268,8 +269,11 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Account\UpdateProfileViewModel.cs" />
     <Compile Include="ViewModels\Account\UserViewModel.cs" />
+    <Compile Include="ViewModels\Child\DisplayChildViewModel.cs" />
     <Compile Include="ViewModels\Comments\AddCommentViewModel.cs" />
     <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
+    <Compile Include="ViewModels\Gift\DetailsGiftViewModel.cs" />
+    <Compile Include="ViewModels\Gift\GiftViewModel.cs" />
     <Compile Include="ViewModels\Institution\AddInstitutionViewModel.cs" />
     <Compile Include="ViewModels\Institution\DetailsInstitutionViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
@@ -458,6 +462,9 @@
     <Content Include="Views\Shared\DisplayTemplates\ListsHomes.cshtml" />
     <Content Include="Views\Shared\_PagingPartial.cshtml" />
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
+    <Content Include="Views\Gift\All.cshtml" />
+    <Content Include="Views\Gift\DonateGift.cshtml" />
+    <Content Include="Views\Shared\_HomeDetailsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

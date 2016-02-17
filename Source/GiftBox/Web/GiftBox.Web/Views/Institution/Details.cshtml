@@ -1,4 +1,5 @@
-﻿@using GiftBox.Web.ViewModels.Comments
+﻿@using GiftBox.Common
+@using GiftBox.Web.ViewModels.Comments
 @model GiftBox.Web.ViewModels.Institution.DetailsInstitutionViewModel
 @{
     ViewBag.Title = "Details";
@@ -37,19 +38,8 @@
                 </div>
             </div>
         </div>
-        <div class="card-reveal" style="display: none; transform: translateY(0px);">
-            <p>
-                <span class="card-title grey-text text-darken-4"> @Model.Name<i class="mdi-navigation-close right"></i></span>
-                <span><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> @Model.HomeAdministrator.FirstName @Model.HomeAdministrator.LastName</span>
-            </p>
-
-            <p>@Model.AditionalInfo</p>
-
-            <p><i class="mdi-action-perm-phone-msg cyan-text text-darken-2"></i> @Model.PhoneNumber</p>
-            <p><i class="mdi-communication-email cyan-text text-darken-2"></i> @Model.HomeAdministrator.Email</p>
-            <p><i class="mdi-communication-location-on cyan-text text-darken-2"></i> @Model.Location.Address</p>
-            <p><i class="mdi-maps-local-post-office cyan-text text-darken-2"></i> @Model.Location.PostCode</p>
-            <p><i class="mdi-action-perm-contact-cal` cyan-text text-darken-2"></i> @Model.ContactInfo</p>
+        <div class="card-reveal center" style="display: none; transform: translateY(0px);">
+            @Html.Partial(GlobalConstants.HomeDetailsPartial, Model)
         </div>
     </div>
     @if (Request.IsAuthenticated)
@@ -57,7 +47,7 @@
         <div class="card-panel">
             <div class="row">
                 <div class="col offset-s1 s10">
-                    @Html.Partial(GiftBox.Common.GlobalConstants.AddCommentPartial, new AddCommentViewModel(Model.Id, null))
+                    @Html.Partial(GlobalConstants.AddCommentPartial, new AddCommentViewModel(Model.Id, null))
                 </div>
             </div>
             <div id="comments">

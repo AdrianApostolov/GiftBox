@@ -53,7 +53,7 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
         public ActionResult ReadGifts([DataSourceRequest]DataSourceRequest request)
         {
             var allGifts = this.gifts
-                .GetAll(this.CurrentUser.HomeId)
+                .GetAllByHomeId(this.CurrentUser.HomeId)
                 .ProjectTo<DisplayGiftViewModel>();
 
             return this.Json(allGifts.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);

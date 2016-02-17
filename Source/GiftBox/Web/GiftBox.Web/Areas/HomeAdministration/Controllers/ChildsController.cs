@@ -16,11 +16,11 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 
-    public class ChildController : BaseController
+    public class ChildsController : BaseController
     {
         private readonly IChildService children;
 
-        public ChildController(IUsersService users, IChildService children)
+        public ChildsController(IUsersService users, IChildService children)
             :base(users)
         {
             this.children = children;
