@@ -12,10 +12,8 @@
                 return homes
                     .Where(x=> x.Name.ToLower().Contains(searchString.ToLower()) ||  x.Location.City.ToLower().Contains(searchString.ToLower()));
             }
-            else
-            {
-                return homes;
-            }
+           
+           return homes;
         }
     }
 }
