@@ -27,10 +27,20 @@
         [HttpGet]
         public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                throw new HttpException(400, "Incorrect route parameters, id cannot be null");
+            }
+
             var home = this.homes
                 .GetHomeById(id)
                 .ProjectTo<DetailsInstitutionViewModel>()
                 .FirstOrDefault();
+
+            if (home == null)
+            {
+                throw new HttpException(404, "Home does not exist");
+            }
 
             return View(home);
         }
