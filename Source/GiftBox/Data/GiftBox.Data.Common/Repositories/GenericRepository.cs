@@ -5,10 +5,11 @@
 
     using GiftBox.Data.Common.Repositories;
 
-    public class GenericRepository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T>
+         where T : class
     {
-        private DbContext db;
-        private IDbSet<T> set;
+        private readonly DbContext db;
+        private readonly IDbSet<T> set;
 
         public GenericRepository(DbContext context)
         {

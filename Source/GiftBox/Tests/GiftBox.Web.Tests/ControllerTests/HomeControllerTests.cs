@@ -37,7 +37,7 @@
                 .Returns(new List<Home>().AsQueryable());
 
             var controller = new HomeController(homeService.Object);
-            controller.WithCallTo(x => x.Index(null,null,null))
+            controller.WithCallTo(x => x.Index(null, null, null))
                 .ShouldRenderView("Index");
         }
 
@@ -76,7 +76,7 @@
                 .Returns(new List<Home>().AsQueryable());
 
             var controller = new HomeController(homeService.Object);
-            controller.WithCallTo(x => x.Index(null,null, 5))
+            controller.WithCallTo(x => x.Index(null, null, 5))
                 .ShouldRenderView("Index");
         }
 

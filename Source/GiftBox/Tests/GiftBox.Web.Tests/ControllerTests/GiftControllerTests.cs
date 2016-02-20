@@ -18,7 +18,6 @@
     [TestClass]
     public class GiftControllerTests
     {
-
         [TestMethod]
         public void ActionAllShoudWorkCorrectly()
         {
@@ -52,7 +51,7 @@
             controller.WithCallTo(x => x.All())
                 .ShouldRenderView("All")
                 .WithModel<IEnumerable<GiftViewModel>>()
-                .AndNoModelErrors(); ;
+                .AndNoModelErrors();
         }
     }
 }

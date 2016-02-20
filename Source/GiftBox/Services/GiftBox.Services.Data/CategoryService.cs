@@ -11,8 +11,9 @@ namespace GiftBox.Services.Data
         private IDeletableEntityRepository<NeedCategory> needCategories;
         private IDeletableEntityRepository<EventCategory> eventCategories;
 
-        public CategoryService(IDeletableEntityRepository<NeedCategory> needCategories, 
-                               IDeletableEntityRepository<EventCategory> eventCategories)
+        public CategoryService(
+            IDeletableEntityRepository<NeedCategory> needCategories, 
+            IDeletableEntityRepository<EventCategory> eventCategories)
         {
             this.needCategories = needCategories;
             this.eventCategories = eventCategories;

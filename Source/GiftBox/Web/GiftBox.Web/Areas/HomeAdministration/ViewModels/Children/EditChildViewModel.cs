@@ -10,7 +10,8 @@
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50), MinLength(2)]
+        [StringLength(50)]
+        [MinLength(2)]
         public string Name { get; set; }
 
         [Required]

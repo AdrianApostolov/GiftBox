@@ -24,7 +24,8 @@
 
         [Required]
         [AllowHtml]
-        [StringLength(150), MinLength(2)]
+        [StringLength(150)]
+        [MinLength(2)]
         public string Content { get; set; }
 
         public DateTime CreatedOn { get; set; }

@@ -4,8 +4,6 @@ using GiftBox.Data.Migrations;
 
 namespace GiftBox.Web.App_Start
 {
-    
-
     public class DatabaseConfig
     {
         public static void Initialize()

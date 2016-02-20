@@ -5,7 +5,6 @@
 
     public class UpdateProfileViewModel
     {
-       
         public HttpPostedFileBase File { get; set; }
     }
 }

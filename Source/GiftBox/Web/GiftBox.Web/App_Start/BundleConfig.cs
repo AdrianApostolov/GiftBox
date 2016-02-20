@@ -16,7 +16,6 @@ namespace GiftBox.Web
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
             "~/Scripts/kendo/kendo.all.min.js",
-            // "~/Scripts/kendo/kendo.timezones.min.js", // uncomment if using the Scheduler
             "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

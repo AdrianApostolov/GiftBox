@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace GiftBox.Web.Areas.HomeAdministration.Controllers
@@ -21,17 +20,11 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
         private readonly IChildService children;
 
         public ChildsController(IUsersService users, IChildService children)
-            :base(users)
+            : base(users)
         {
             this.children = children;
         }
 
-        // GET: HomeAdministration/Child
-        public ActionResult Index()
-        {
-            return View();
-        }
-       
         public ActionResult CreateChild([DataSourceRequest]DataSourceRequest request, IEnumerable<AddChildViewModel> models)
         {
             var result = new List<AddChildViewModel>();
@@ -78,6 +71,7 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
                     this.children.Delete(model.Id);
                     result.Add(model);
                 }
+
                 return this.Json(new[] { result }.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
 

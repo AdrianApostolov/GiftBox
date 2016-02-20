@@ -8,8 +8,11 @@
         public DateTime CreatedOn { get; set; }
 
         /// <summary>
-        /// Specifies whether or not the CreatedOn property should be automatically set.
+        /// Gets or sets a value indicating whether specifies whether or not the CreatedOn property should be automatically set.
         /// </summary>
+        /// <value>
+        /// A value indicating whether specifies whether or not the CreatedOn property should be automatically set.
+        /// </value>
         [NotMapped]
         public bool PreserveCreatedOn { get; set; }
 

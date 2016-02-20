@@ -9,11 +9,18 @@
 
     public static class KendoHelpers
     {
-        public static GridBuilder<T> FullFeaturedGrid<T>(this HtmlHelper helper, string gridName,
-            string readControllerName, string controllerName,
-            string readMethod, string createMethod, string updateMethod, string destroyMethod,
+        public static GridBuilder<T> FullFeaturedGrid<T>(
+            this HtmlHelper helper, 
+            string gridName,
+            string readControllerName,
+            string controllerName,
+            string readMethod, 
+            string createMethod, 
+            string updateMethod,
+            string destroyMethod,
             Action<DataSourceModelDescriptorFactory<T>> factory,
-            Action<GridColumnFactory<T>> columns = null) where T : class
+            Action<GridColumnFactory<T>> columns = null) 
+            where T : class
         {
             if (columns == null)
             {

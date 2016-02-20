@@ -1,8 +1,8 @@
-﻿using System;
-using GiftBox.Data.Common.Models;
-
-namespace GiftBox.Data.Models
+﻿namespace GiftBox.Data.Models
 {
+    using System;
+    using GiftBox.Data.Common.Models;
+
     public class EventCategory : AuditInfo, IDeletableEntity
     {
         public int Id { get; set; }

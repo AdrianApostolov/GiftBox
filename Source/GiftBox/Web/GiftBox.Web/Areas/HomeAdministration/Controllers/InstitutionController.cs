@@ -22,11 +22,6 @@
             this.locations = locations;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
         public ActionResult Details()
         {
@@ -35,7 +30,7 @@
                 .ProjectTo<DetailsInstitutionViewModel>()
                 .FirstOrDefault();
 
-            return View(home);
+            return this.View(home);
         }
 
         [HttpGet]
@@ -43,7 +38,6 @@
         {
             return this.View();
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -67,8 +61,9 @@
                 this.CurrentUser.HomeId = home.Id;
                 this.users.Update();
                 this.TempData["Success"] = GlobalConstants.CreateHomeMessage;
-                return this.RedirectToAction("Details", new { id = home.Id, area = "" });
+                return this.RedirectToAction("Details", new { id = home.Id, area = string.Empty });
             }
+
             return this.View(model);
         }
     }

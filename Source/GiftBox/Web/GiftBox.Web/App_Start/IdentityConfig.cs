@@ -45,6 +45,7 @@ namespace GiftBox.Web
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
         {
             var manager = new ApplicationUserManager(new UserStore<User>(context.Get<GiftBoxDbContext>()));
+
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<User>(manager)
             {
@@ -69,15 +70,8 @@ namespace GiftBox.Web
 
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
-            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<User>
-            {
-                MessageFormat = "Your security code is {0}"
-            });
-            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<User>
-            {
-                Subject = "Security Code",
-                BodyFormat = "Your security code is {0}"
-            });
+            manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<User> { MessageFormat = "Your security code is {0}" });
+            manager.RegisterTwoFactorProvider("Email Code", new EmailTokenProvider<User> { Subject = "Security Code", BodyFormat = "Your security code is {0}" });
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();
             var dataProtectionProvider = options.DataProtectionProvider;
@@ -86,6 +80,7 @@ namespace GiftBox.Web
                 manager.UserTokenProvider = 
                     new DataProtectorTokenProvider<User>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
+
             return manager;
         }
     }
@@ -98,14 +93,14 @@ namespace GiftBox.Web
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(User user)
-        {
-            return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
-        }
-
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
             return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(User user)
+        {
+            return user.GenerateUserIdentityAsync((ApplicationUserManager)this.UserManager);
         }
     }
 }

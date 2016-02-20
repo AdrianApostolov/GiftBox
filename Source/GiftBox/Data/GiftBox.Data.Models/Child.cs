@@ -18,7 +18,7 @@ namespace GiftBox.Data.Models
 
         public string Name { get; set; }
 
-        public int  Age { get; set; }
+        public int Age { get; set; }
 
         public int HomeId { get; set; }
 
@@ -34,6 +34,6 @@ namespace GiftBox.Data.Models
         {
             get { return this.gifts; }
             set { this.gifts = value; }
-        } 
+        }
     }
 }

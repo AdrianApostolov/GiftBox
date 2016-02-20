@@ -9,7 +9,7 @@ namespace GiftBox.Data.Migrations
     {
         public Configuration()
         {
-            //TODO: Fix this
+            // TODO: Fix this
             this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = true;
         }

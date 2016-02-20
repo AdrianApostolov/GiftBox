@@ -6,7 +6,7 @@
     {
         public static byte[] StringToBytes(string strInput)
         {
-            int numBytes = (strInput.Length) / 2;
+            int numBytes = strInput.Length / 2;
             byte[] bytes = new byte[numBytes];
 
             for (int x = 0; x < numBytes; ++x)

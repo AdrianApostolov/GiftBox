@@ -17,7 +17,7 @@ namespace GiftBox.Web.Controllers.Comments
         private IHomeService homes;
 
         public CommentsController(IUsersService users, ICommentService comments, IHomeService homes)
-            :base(users)
+            : base(users)
         {
             this.comments = comments;
             this.homes = homes;
@@ -27,7 +27,7 @@ namespace GiftBox.Web.Controllers.Comments
         [ValidateAntiForgeryToken]
         public ActionResult AddComment(AddCommentViewModel model)
         {
-            if (model != null && ModelState.IsValid)
+            if (model != null && this.ModelState.IsValid)
             {
                 var comment = Mapper.Map<Comment>(model);
                 comment.UserId = this.CurrentUser.Id;

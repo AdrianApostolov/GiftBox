@@ -18,10 +18,12 @@
             this.CreatedOn = DateTime.Now;
         }
 
-        [StringLength(50), MinLength(2)]
+        [StringLength(50)]
+        [MinLength(2)]
         public string FirstName { get; set; }
 
-        [StringLength(50), MinLength(2)]
+        [StringLength(50)]
+        [MinLength(2)]
         public string LastName { get; set; }
 
         public int HomeId { get; set; }
@@ -45,6 +47,7 @@
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+           
             // Add custom user claims here
             return userIdentity;
         }

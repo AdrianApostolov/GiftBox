@@ -13,6 +13,5 @@
         void Add(Comment comment);
 
         IQueryable<Comment> GetHomeComments(int? id);
-
     }
 }

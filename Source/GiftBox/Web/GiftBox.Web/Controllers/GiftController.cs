@@ -1,5 +1,4 @@
-﻿
-namespace GiftBox.Web.Controllers
+﻿namespace GiftBox.Web.Controllers
 {
     using System.Data.Entity;
     using System.Linq;
@@ -17,7 +16,7 @@ namespace GiftBox.Web.Controllers
         private readonly IGiftService gifts;
 
         public GiftController(IUsersService users, IGiftService gifts)
-            :base(users)
+            : base(users)
         {
             this.gifts = gifts;
         }
@@ -29,7 +28,7 @@ namespace GiftBox.Web.Controllers
                 .GetAllNotClaimed()
                 .ProjectTo<GiftViewModel>();
 
-            return View(allGifts);
+            return this.View(allGifts);
         }
 
         [HttpGet]
@@ -50,7 +49,7 @@ namespace GiftBox.Web.Controllers
             this.gifts.Update(currentGift);
             this.TempData["Success"] = GlobalConstants.ClaimSuccessMessage;
 
-            return this.RedirectToAction("DonateGift", new {id = currentGift.Id});
+            return this.RedirectToAction("DonateGift", new { id = currentGift.Id });
         }
 
         private Gift GetCurrentGift(int? id)

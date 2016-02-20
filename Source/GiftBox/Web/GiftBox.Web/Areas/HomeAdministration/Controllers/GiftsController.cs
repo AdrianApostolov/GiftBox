@@ -3,12 +3,12 @@
     using System.Collections.Generic;
     using System.Web.Mvc;
     using AutoMapper;
+    using GiftBox.Common;
     using GiftBox.Data.Models;
     using GiftBox.Services.Data.Contracts;
     using GiftBox.Web.Areas.HomeAdministration.ViewModels.Gift;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-
 
     public class GiftsController : Controller
     {
@@ -19,12 +19,6 @@
             this.gifts = gifts;
         }
 
-        // GET: HomeAdministration/Gifts
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ActionResult CreateGift([DataSourceRequest]DataSourceRequest request, IEnumerable<AddGiftViewModel> models)
         {
             var result = new List<AddGiftViewModel>();
@@ -33,6 +27,7 @@
                 foreach (var model in models)
                 {
                     var dbModel = AutoMapper.Mapper.Map<Gift>(model);
+                    dbModel.ImageUrl = GlobalConstants.DefaultGiftPicture;
                     this.gifts.Add(dbModel);
                     result.Add(model);
                 }
@@ -69,6 +64,7 @@
                     this.gifts.Delete(model.Id);
                     result.Add(model);
                 }
+
                 return this.Json(new[] { result }.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
 

@@ -9,7 +9,6 @@ namespace GiftBox.Web.ViewModels.Institution
 
     public class AddInstitutionViewModel : IMapFrom<Home>
     { 
-    
         public int Id { get; set; }
         
         [Required]

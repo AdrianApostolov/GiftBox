@@ -15,20 +15,10 @@
         public GiftBoxDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Configuration.ProxyCreationEnabled = false; 
-        }
-        
-        public new IDbSet<T> Set<T>() where T : class
-        {
-            return base.Set<T>();
+            this.Configuration.ProxyCreationEnabled = false; 
         }
 
-        public static GiftBoxDbContext Create()
-        {
-            return new GiftBoxDbContext();
-        }
-
-        public virtual IDbSet<Child> Children { get; set; }
+       public virtual IDbSet<Child> Children { get; set; }
 
         public virtual IDbSet<Comment> Comments { get; set; }
 
@@ -44,6 +34,16 @@
 
         public virtual IDbSet<NeedCategory> NeedCategorys { get; set; }
 
+        public static GiftBoxDbContext Create()
+        {
+            return new GiftBoxDbContext();
+        }
+
+        public new IDbSet<T> Set<T>()
+            where T : class
+        {
+            return base.Set<T>();
+        }
 
         public override int SaveChanges()
         {

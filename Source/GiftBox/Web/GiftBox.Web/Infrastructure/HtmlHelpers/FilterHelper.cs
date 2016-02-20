@@ -10,7 +10,7 @@
             if (!string.IsNullOrEmpty(searchString))
             {
                 return homes
-                    .Where(x=> x.Name.ToLower().Contains(searchString.ToLower()) ||  x.Location.City.ToLower().Contains(searchString.ToLower()));
+                    .Where(x => x.Name.ToLower().Contains(searchString.ToLower()) || x.Location.City.ToLower().Contains(searchString.ToLower()));
             }
            
            return homes;

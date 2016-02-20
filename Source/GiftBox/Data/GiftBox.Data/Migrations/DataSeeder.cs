@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using GiftBox.Common;
@@ -37,7 +38,6 @@ namespace GiftBox.Data.Migrations
             userManager.AddToRole(admin.Id, GlobalConstants.UserRole);
             userManager.AddToRole(admin.Id, GlobalConstants.HomeAdministrator);
 
-
             context.SaveChanges();
         }
 
@@ -64,7 +64,7 @@ namespace GiftBox.Data.Migrations
             {
                     var needCategories = new List<NeedCategory>()
                 {
-                    new NeedCategory() {Name = "Food"},
+                    new NeedCategory() { Name = "Food" },
                     new NeedCategory() { Name = "Мedicaments" },
                     new NeedCategory() { Name = "Building Materials" }
                 };

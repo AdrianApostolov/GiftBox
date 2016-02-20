@@ -1,8 +1,6 @@
-﻿
-using System;
-
-namespace GiftBox.Data.Models
+﻿namespace GiftBox.Data.Models
 {
+    using System;
     using System.Collections.Generic;
     using GiftBox.Data.Common.Models;
 
@@ -40,6 +38,5 @@ namespace GiftBox.Data.Models
             get { return this.comments; }
             set { this.comments = value; }
         }
-
     }
 }

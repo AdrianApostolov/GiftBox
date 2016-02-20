@@ -13,8 +13,8 @@ namespace GiftBox.Web
     {
         protected void Application_Start()
         {
-            (new ViewEnginesConfig()).RegisterViewEngines();
-            (new AutoMapperConfig(Assembly.GetExecutingAssembly())).Execute();
+            new ViewEnginesConfig().RegisterViewEngines();
+            new AutoMapperConfig(Assembly.GetExecutingAssembly()).Execute();
            
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

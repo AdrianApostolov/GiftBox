@@ -1,8 +1,4 @@
-﻿
-
-using AutoMapper;
-
-namespace GiftBox.Web.Areas.HomeAdministration.Controllers
+﻿namespace GiftBox.Web.Areas.HomeAdministration.Controllers
 {
     using System.Collections.Generic;
     using System.Web.Mvc;
@@ -12,21 +8,16 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
     using GiftBox.Web.Controllers;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
+    using AutoMapper;
 
     public class NeedsController : BaseController
     {
         private readonly INeedService needs;
 
-        public NeedsController(IUsersService users,INeedService needs)
-            :base(users)
+        public NeedsController(IUsersService users, INeedService needs)
+            : base(users)
         {
             this.needs = needs;
-        }
-
-        // GET: HomeAdministration/Needs
-        public ActionResult Index()
-        {
-            return View();
         }
 
         public ActionResult CreateNeed([DataSourceRequest]DataSourceRequest request, IEnumerable<AddNeedViewModel> models)
@@ -74,6 +65,7 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
                     this.needs.Delete(model.Id);
                     result.Add(model);
                 }
+
                 return this.Json(new[] { result }.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
             }
 

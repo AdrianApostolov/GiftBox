@@ -36,6 +36,5 @@ namespace GiftBox.Web.Areas.HomeAdministration.ViewModels.Needs
             configuration.CreateMap<Need, DisplayNeedViewModel>()
                 .ForMember(m => m.HomeName, opt => opt.MapFrom(x => x.Home.Name));
         }
-
     }
 }

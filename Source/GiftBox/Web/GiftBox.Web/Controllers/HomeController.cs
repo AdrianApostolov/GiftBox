@@ -24,7 +24,7 @@ namespace GiftBox.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(string searchInput, string currentFilter,int? page)
+        public ActionResult Index(string searchInput, string currentFilter, int? page)
         {
             var allHomes = this.homes.GetAll();
 
@@ -39,7 +39,7 @@ namespace GiftBox.Web.Controllers
 
             allHomes = FilterHelper.FilterSearchString(searchInput, allHomes);
 
-            ViewBag.CurrentFilter = searchInput;
+            this.ViewBag.CurrentFilter = searchInput;
 
             var viewModel = allHomes
                 .OrderBy(x => x.CreatedOn)
@@ -47,21 +47,21 @@ namespace GiftBox.Web.Controllers
 
             int pageNumber = page ?? 1;
 
-            return View(viewModel.ToPagedList(pageNumber, PageSize));
+            return this.View(viewModel.ToPagedList(pageNumber, PageSize));
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            this.ViewBag.Message = "Your application description page.";
 
-            return View();
+            return this.View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            this.ViewBag.Message = "Your contact page.";
 
-            return View();
+            return this.View();
         }
 
         [HttpGet]

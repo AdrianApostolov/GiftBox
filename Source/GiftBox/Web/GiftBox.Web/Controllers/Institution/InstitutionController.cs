@@ -19,7 +19,7 @@
         private readonly IHomeService homes;
 
         public InstitutionController(IUsersService users, IHomeService homes)
-            :base(users)
+            : base(users)
         {
             this.homes = homes;
         }
@@ -42,7 +42,7 @@
                 throw new HttpException(404, "Home does not exist");
             }
 
-            return View(home);
+            return this.View(home);
         }
     }
 }

@@ -8,7 +8,6 @@
     using GiftBox.Web.Infrastructure.Mapping;
     using AutoMapper;
 
-
     public class DetailsInstitutionViewModel : IMapFrom<Home>
     {
         public int Id { get; set; }

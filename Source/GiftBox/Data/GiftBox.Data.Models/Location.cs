@@ -1,6 +1,6 @@
 ﻿namespace GiftBox.Data.Models
 {
-    using  System;
+    using System;
     using GiftBox.Data.Common.Models;
 
     public class Location : AuditInfo, IDeletableEntity

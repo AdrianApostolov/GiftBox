@@ -17,8 +17,7 @@ namespace GiftBox.Web
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new []{ "GiftBox.Web.Controllers" }
-            );
+                namespaces: new[] { "GiftBox.Web.Controllers" });
         }
     }
 }

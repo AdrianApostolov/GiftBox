@@ -18,8 +18,7 @@ namespace GiftBox.Web.Areas.HomeAdministration
                 "HomeAdministration_default",
                 "HomeAdministration/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new[] { "GiftBox.Web.Areas.HomeAdministration.Controllers" }
-            );
+                new[] { "GiftBox.Web.Areas.HomeAdministration.Controllers" });
         }
     }
 }

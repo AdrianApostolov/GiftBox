@@ -26,7 +26,7 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
         private readonly ICategoryService categories;
 
         public ManageController(IUsersService users, IChildService children, IGiftService gifts, ICategoryService categories, INeedService needs)
-            :base(users)
+            : base(users)
         {
             this.children = children;
             this.gifts = gifts;
@@ -37,8 +37,8 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            PopulateDropDowns();
-            return View();
+            this.PopulateDropDowns();
+            return this.View();
         }
 
         public ActionResult ReadChild([DataSourceRequest]DataSourceRequest request)
@@ -82,7 +82,7 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
                 .GetNeedCategories()
                 .ProjectTo<DisplayNeedCategoryViewModel>();
 
-            this.ViewData["children"]  = childrenAll;
+            this.ViewData["children"] = childrenAll;
             this.ViewData["defaultChild"] = childrenAll.Any() ? childrenAll.First() : null;
 
             this.ViewData["eventCategories"] = eventCategory;

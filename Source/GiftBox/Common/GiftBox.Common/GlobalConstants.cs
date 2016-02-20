@@ -8,6 +8,7 @@
 
         public const string DefaultUserPicture = "http://educaresydney.com.au/wp-content/uploads/2015/01/Coming-soon-clipart.png";
         public const string DefaultHomeCoverPage = "http://demo.geekslabs.com/materialize/v3.1/images/user-profile-bg.jpg";
+        public const string DefaultGiftPicture = "http://www.thelifestylersgroup.com.au/wp-content/uploads/2012/03/Present_Fotolia_46871443_S.jpg";
 
         public const string ImageFolderPathPrefix = "~/Resources/Images/Profile/";
         public const string ImageUrlPrefix = "/Resources/Images/Profile/";
