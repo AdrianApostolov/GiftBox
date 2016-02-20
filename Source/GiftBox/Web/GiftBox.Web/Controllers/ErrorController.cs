@@ -16,7 +16,7 @@ namespace GiftBox.Web.Controllers
         public ViewResult NotFound()
         {
             this.Response.StatusCode = 404;
-            return this.View("NotFoundErrorPage");
+            return this.View();
         }
     }
 }

@@ -470,7 +470,7 @@
     <Content Include="Views\Gift\DonateGift.cshtml" />
     <Content Include="Views\Shared\_HomeDetailsPartial.cshtml" />
     <Content Include="stylecop.json" />
-    <Content Include="Views\Error\NotFoundErrorPage.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
