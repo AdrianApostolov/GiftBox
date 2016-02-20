@@ -1,6 +1,4 @@
-﻿using GiftBox.Web.Areas.HomeAdministration.ViewModels.Needs;
-
-namespace GiftBox.Web.Areas.HomeAdministration.Controllers
+﻿namespace GiftBox.Web.Areas.HomeAdministration.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
@@ -11,7 +9,7 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
     using GiftBox.Web.Areas.HomeAdministration.ViewModels.Categories;
     using GiftBox.Web.Areas.HomeAdministration.ViewModels.Children;
     using GiftBox.Web.Areas.HomeAdministration.ViewModels.Gift;
-
+    using GiftBox.Web.Areas.HomeAdministration.ViewModels.Needs;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 

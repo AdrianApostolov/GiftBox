@@ -21,7 +21,18 @@
         // GET: Settings
         public ActionResult UpdateProfile(string id)
         {
+            if (id == null)
+            {
+                throw new HttpException(404, "Incorrect route parameters, id cannot be null");
+            }
+
             var user = Mapper.Map<UserViewModel>(this.users.GetById(id));
+
+            if (user == null)
+            {
+                throw new HttpException(404, "User does not exist");
+            }
+
             return this.View(user);
         }
 

@@ -29,7 +29,7 @@
         {
             if (id == null)
             {
-                throw new HttpException(400, "Incorrect route parameters, id cannot be null");
+                throw new HttpException(404, "Incorrect route parameters, id cannot be null");
             }
 
             var home = this.homes
