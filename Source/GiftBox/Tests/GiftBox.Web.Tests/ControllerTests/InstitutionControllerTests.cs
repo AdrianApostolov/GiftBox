@@ -25,11 +25,12 @@ namespace GiftBox.Web.Tests.ControllerTests
 
             var userServerce = new Mock<IUsersService>();
             var homeService = new Mock<IHomeService>();
+            var giftService = new Mock<IGiftService>();
 
             homeService.Setup(x => x.GetHomeById(It.IsAny<int>()))
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new InstitutionController(userServerce.Object, homeService.Object);
+            var controller = new InstitutionController(userServerce.Object, homeService.Object, giftService.Object);
             controller.WithCallTo(x => x.Details(It.IsAny<int>()))
                 .ShouldRenderView("Details");
         }
@@ -43,11 +44,12 @@ namespace GiftBox.Web.Tests.ControllerTests
 
             var userServerce = new Mock<IUsersService>();
             var homeService = new Mock<IHomeService>();
+            var giftService = new Mock<IGiftService>();
 
             homeService.Setup(x => x.GetHomeById(null))
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new InstitutionController(userServerce.Object, homeService.Object);
+            var controller = new InstitutionController(userServerce.Object, homeService.Object, giftService.Object);
             controller.WithCallTo(x => x.Details(null))
                 .ShouldRenderView("Details");
         }

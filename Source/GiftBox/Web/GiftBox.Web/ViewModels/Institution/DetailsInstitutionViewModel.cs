@@ -1,4 +1,8 @@
-﻿namespace GiftBox.Web.ViewModels.Institution
+﻿using System.Collections.Generic;
+using GiftBox.Web.Areas.HomeAdministration.ViewModels.Children;
+using GiftBox.Web.ViewModels.Need;
+
+namespace GiftBox.Web.ViewModels.Institution
 {
     using GiftBox.Data.Models;
     using GiftBox.Web.Infrastructure.Mapping;
@@ -22,5 +26,7 @@
         public string PhoneNumber { get; set; }
 
         public string ContactInfo { get; set; }
+
+        public ICollection<NeedViewModel> Needs { get; set; }
     }
 }

@@ -1,29 +1,7 @@
-﻿@model IEnumerable<GiftBox.Web.ViewModels.Need.NeedViewModel>
+﻿@using GiftBox.Common
+@model IEnumerable<GiftBox.Web.ViewModels.Need.NeedViewModel>
 @{
     ViewBag.Title = "All";
 }
 
-<div class="row">
-    @foreach (var need in Model)
-    {
-        <a href="/Need/Details/@need.Id">
-            <div class="col s4">
-                <div id="flight-card" class="card hoverable">
-                    <div class="card-header deep-purple lighten-2">
-                        <div class="card-title white-text">
-                            <h4 class="flight-card-title center">@need.Home.Name</h4>
-                            <p class="flight-card-date center">@need.NeedCategory.Name</p>
-                        </div>
-                    </div>
-                    <div class="card-content-bg">
-                        <div class="card-content">
-                            <p>@need.Description</p>
-                            <img style="width: 100%" src="@need.ImageUrl"/>
-                            <p class="right"><b>Click for details</b></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    }
-</div>
+@Html.Partial(GlobalConstants.ListNeedsPartial, Model)

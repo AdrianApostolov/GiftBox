@@ -1,4 +1,7 @@
-﻿namespace GiftBox.Web.Controllers
+﻿using System.Data.Entity;
+using GiftBox.Web.ViewModels.Gift;
+
+namespace GiftBox.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -17,11 +20,13 @@
     public class InstitutionController : BaseController
     {
         private readonly IHomeService homes;
+        private readonly IGiftService gifts;
 
-        public InstitutionController(IUsersService users, IHomeService homes)
+        public InstitutionController(IUsersService users, IHomeService homes, IGiftService gifts)
             : base(users)
         {
             this.homes = homes;
+            this.gifts = gifts;
         }
         
         [HttpGet]
@@ -43,6 +48,19 @@
             }
 
             return this.View(home);
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult GetChildrenGifts(int homeId)
+        {
+            var allGifts = this.gifts
+                .GetAll()
+                .Include(x => x.Child)
+                .Where(x => x.Child.HomeId == homeId)
+                .ProjectTo<GiftViewModel>();
+
+            return this.PartialView(GlobalConstants.ListGiftsPartial, allGifts);
         }
     }
 }

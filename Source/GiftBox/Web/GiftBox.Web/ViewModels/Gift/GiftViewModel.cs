@@ -26,7 +26,11 @@
 
         public int ChildId { get; set; }
 
-        public DisplayChildViewModel Child { get; set; }
+        public int ChildHomeId { get; set; }
+
+        public string ChildHomeName { get; set; }
+
+        public string ChildName { get; set; }
 
         public string Category { get; set; }
 
@@ -34,7 +38,10 @@
         {
             configuration.CreateMap<Gift, GiftViewModel>()
                 .ForMember(g => g.Category, opt => opt.MapFrom(x => x.EventCategory.Name))
-                .ForMember(m => m.ClaimedBy, opt => opt.MapFrom(x => x.ClaimedBy.UserName)); 
+                .ForMember(m => m.ClaimedBy, opt => opt.MapFrom(x => x.ClaimedBy.UserName))
+                .ForMember(c => c.ChildHomeId, opt => opt.MapFrom(x => x.Child.HomeId))
+                .ForMember(c => c.ChildName, opt => opt.MapFrom(x => x.Child.Name))
+                .ForMember(c => c.ChildHomeName, opt => opt.MapFrom(x => x.Child.Home.Name));
         }
     }
 }

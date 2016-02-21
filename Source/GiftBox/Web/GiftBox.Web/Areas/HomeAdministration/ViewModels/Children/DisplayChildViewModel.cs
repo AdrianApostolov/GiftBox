@@ -1,4 +1,7 @@
-﻿namespace GiftBox.Web.Areas.HomeAdministration.ViewModels.Children
+﻿using System.Collections.Generic;
+using GiftBox.Web.ViewModels.Gift;
+
+namespace GiftBox.Web.Areas.HomeAdministration.ViewModels.Children
 {
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
@@ -21,6 +24,8 @@
         public string Name { get; set; }
     
         public int Age { get; set; }
+
+        public ICollection<GiftViewModel> Gifts { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {

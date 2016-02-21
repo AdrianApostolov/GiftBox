@@ -1,40 +1,7 @@
-﻿@using GiftBox.Web.Infrastructure.HtmlHelpers
+﻿@using GiftBox.Common
 @model IEnumerable<GiftBox.Web.ViewModels.Gift.GiftViewModel>
 @{
     ViewBag.Title = "All";
 }
 
-<div class="">
-    <div class="section">
-        <div class="divider"></div>
-        <div class="row">
-            @foreach (var gift in Model)
-            {
-                <section class="plans-container" id="plans">
-                    <article class="col s3">
-                        <div class="card hoverable bounceInDown animated">
-                            <div class="card-image purple waves-effect">
-                                <img src="@gift.ImageUrl" style="height: 250px;" />
-                            </div>
-                            <div class="card-content">
-                                <ul class="">
-                                    <li>Institution: <a href=@Url.Action("Details", "Institution", new {area = "", id = @gift.Child.HomeId})>@gift.Child.HomeName</a></li>
-                                    <li>Child: <b>@gift.Child.Name</b></li>
-                                    <li>Gift: <b>@gift.AditionalInfo</b></li>
-                                    <li>Expiration Data: <b style="color: red">@gift.ExpirationDate</b></li>
-                                    <li>Present for: <b>@gift.Category</b></li>
-                                </ul>
-                            </div>
-                            <div class="card-action center-align">
-                                @using (Html.BeginForm("DonateGift", "Gift", new { id = @gift.Id }, FormMethod.Post))
-                                {
-                                    @Html.Submit("Donate Gift", new { @class = "waves-effect waves-light  btn" })
-                                }
-                            </div>
-                        </div>
-                    </article>
-                </section>
-            }
-        </div>
-    </div>
-</div>
+@Html.Partial(GlobalConstants.ListGiftsPartial, Model)

@@ -475,6 +475,8 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Need\All.cshtml" />
     <Content Include="Views\Need\Details.cshtml" />
+    <Content Include="Views\Shared\_ListNeedsPartial.cshtml" />
+    <Content Include="Views\Shared\_ListGiftsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
