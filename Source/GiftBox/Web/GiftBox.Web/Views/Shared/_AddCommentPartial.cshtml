@@ -1,6 +1,5 @@
 ﻿@using GiftBox.Web.Infrastructure.HtmlHelpers
 @model GiftBox.Web.ViewModels.Comments.AddCommentViewModel
-
 @using (Ajax.BeginForm("AddComment", "Comments",
                     new { area = "" },
                     new AjaxOptions
@@ -8,11 +7,13 @@
                         HttpMethod = "POST",
                         InsertionMode = InsertionMode.InsertBefore,
                         UpdateTargetId = "comments",
+                        OnSuccess = "onSuccess"
                     }))
 {
     @Html.AntiForgeryToken()
 
     @Html.HiddenFor(m => m.HomeId)
+    @Html.HiddenFor(m => m.NeedId)
     <div class="row">
         <div class="input-field col offset-s1 s8">
             <i class="mdi-communication-chat prefix"></i>
@@ -25,6 +26,7 @@
         </div>
     </div>
 }
+
 @*<script>
     $('#btn-comment').click(function() { $('.materialize-textarea').val('') });
 </script>*@

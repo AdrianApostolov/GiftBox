@@ -19,17 +19,23 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
             <ul class="left hide-on-med-and-down">
                 <li>@Html.ActionLink("Home", "Index", "Home", new {area = ""}, new {})</li>
-                <li>@Html.ActionLink("Gifts", "All", "Gift", new { area = "" }, new { })</li>
+                <li>@Html.ActionLink("Gifts", "All", "Gift", new {area = ""}, new {})</li>
+                <li>@Html.ActionLink("Needs", "All", "Need", new { area = "" }, new { })</li>
                 <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { })</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { })</li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
                 <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { })</li>
                 <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { })</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { })</li>
-                <li><a href=@Url.Action("Details", "Institution", new {area = "HomeAdministration"})>Home Profile</a></li>
-                <li><a href=@Url.Action("Index", "Manage", new {area = "HomeAdministration"})>Manage</a></li>
-                <li><a href=@Url.Action("Create", "Institution", new {area = "HomeAdministration"})>Create</a></li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home", new {area = ""}, new {})</li>
+                <li>@Html.ActionLink("Gifts", "All", "Gift", new { area = "" }, new { })</li>
+                <li>@Html.ActionLink("Needs", "All", "Need", new {area = ""}, new {})</li>
+                @if (User.IsInRole("HomeAdministrator") && User.Identity.IsAuthenticated)
+                {
+                    <li><a href=@Url.Action("Details", "Institution", new {area = "HomeAdministration"})>Home Profile</a></li>
+                    <li><a href=@Url.Action("Index", "Manage", new {area = "HomeAdministration"})>Manage</a></li>
+                    <li><a href=@Url.Action("Create", "Institution", new {area = "HomeAdministration"})>Create</a></li>
+                }
             </ul>
             @Html.Partial("_LoginPartial")
             @if (User.IsInRole("HomeAdministrator") && User.Identity.IsAuthenticated)

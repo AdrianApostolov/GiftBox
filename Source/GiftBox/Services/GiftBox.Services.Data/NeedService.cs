@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using GiftBox.Data.Common.Repositories;
 using GiftBox.Data.Models;
 
@@ -13,18 +14,26 @@ namespace GiftBox.Services.Data
         public NeedService(IDeletableEntityRepository<Need> needs)
         {
             this.needs = needs;
-        } 
+        }
 
-        public IQueryable<Need> GetAll(int homeId)
+        public IQueryable<Need> GetAll()
         {
             var allNeeds = this.needs
-                .All()
-                .Where(x => x.HomeId == homeId);
+                .All();
 
             return allNeeds;
         }
 
-        public Need GetById(int id)
+        public IQueryable<Need> GetAllByHomeId(int homeId)
+        {
+            var allNeedsByHomeId = this.needs
+                .All()
+                .Where(x => x.HomeId == homeId);
+
+            return allNeedsByHomeId;
+        }
+
+        public Need GetById(int? id)
         {
             var need = this.needs.GetById(id);
 

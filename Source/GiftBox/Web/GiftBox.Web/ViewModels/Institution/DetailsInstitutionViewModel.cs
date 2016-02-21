@@ -1,12 +1,7 @@
 ﻿namespace GiftBox.Web.ViewModels.Institution
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using GiftBox.Data.Models;
     using GiftBox.Web.Infrastructure.Mapping;
-    using AutoMapper;
 
     public class DetailsInstitutionViewModel : IMapFrom<Home>
     {

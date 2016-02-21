@@ -13,5 +13,7 @@
         void Add(Comment comment);
 
         IQueryable<Comment> GetHomeComments(int? id);
+
+        IQueryable<Comment> GetNeedComments(int? id);
     }
 }

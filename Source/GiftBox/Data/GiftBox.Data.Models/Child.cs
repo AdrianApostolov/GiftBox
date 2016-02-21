@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace GiftBox.Data.Models
+﻿namespace GiftBox.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
     using GiftBox.Data.Common.Models;
 
     public class Child : AuditInfo, IDeletableEntity

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using GiftBox.Common;
 using GiftBox.Data.Models;
@@ -15,12 +16,14 @@ namespace GiftBox.Web.Controllers.Comments
     {
         private ICommentService comments;
         private IHomeService homes;
+        private INeedService needs;
 
-        public CommentsController(IUsersService users, ICommentService comments, IHomeService homes)
+        public CommentsController(IUsersService users, ICommentService comments, IHomeService homes, INeedService needs)
             : base(users)
         {
             this.comments = comments;
             this.homes = homes;
+            this.needs = needs;
         }
 
         [HttpPost]
@@ -32,17 +35,33 @@ namespace GiftBox.Web.Controllers.Comments
                 var comment = Mapper.Map<Comment>(model);
                 comment.UserId = this.CurrentUser.Id;
 
-                var home = this.homes
+                if (model.HomeId != null)
+                {
+                    var home = this.homes
                     .GetHomeById(model.HomeId)
                     .FirstOrDefault();
 
-                if (home == null)
-                {
-                    throw new HttpException(404, GlobalConstants.PageNotFound);
+                    if (home == null)
+                    {
+                        throw new HttpException(404, GlobalConstants.PageNotFound);
+                    }
+
+                    home.Comments.Add(comment);
+                    this.homes.Update();
                 }
 
-                home.Comments.Add(comment);
-                this.homes.Update();
+                if (model.NeedId != null)
+                {
+                    var need = this.needs.GetById(model.NeedId);
+
+                    if (need == null)
+                    {
+                        throw new HttpException(404, GlobalConstants.PageNotFound);
+                    }
+
+                    need.Comments.Add(comment);
+                    this.needs.Update(need);
+                }
 
                 var viewModel = Mapper.Map<CommentViewModel>(comment);
 
@@ -51,7 +70,7 @@ namespace GiftBox.Web.Controllers.Comments
 
             throw new HttpException(400, GlobalConstants.InvalidComment);
         }
-        
+
         public ActionResult Delete(int id, string userName)
         {
             var comment = this.comments.GetById(id);
@@ -68,11 +87,21 @@ namespace GiftBox.Web.Controllers.Comments
             return this.PartialView(GlobalConstants.PageCommentsPartial, comments);
         }
 
-        public ActionResult GetPageCommentsPartial(int homeId)
+        public ActionResult GetPageCommentsPartial(int entityId, bool isNeed = false)
         {
-            var comments = this.comments
-                .GetHomeComments(homeId)
-                .ProjectTo<CommentViewModel>();
+            IQueryable<CommentViewModel> comments;
+            if (isNeed)
+            {
+                comments = this.comments
+                    .GetNeedComments(entityId)
+                    .ProjectTo<CommentViewModel>();
+            }
+            else
+            {
+                comments = this.comments
+                    .GetHomeComments(entityId)
+                    .ProjectTo<CommentViewModel>();
+            }
 
             return this.PartialView(GlobalConstants.PageCommentsPartial, comments);
         }

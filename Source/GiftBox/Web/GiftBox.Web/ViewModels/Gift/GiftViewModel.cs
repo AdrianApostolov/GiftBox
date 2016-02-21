@@ -1,12 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
-using AutoMapper;
-using GiftBox.Web.Areas.HomeAdministration.ViewModels.Categories;
-using GiftBox.Web.Areas.HomeAdministration.ViewModels.Children;
-
-namespace GiftBox.Web.ViewModels.Gift
+﻿namespace GiftBox.Web.ViewModels.Gift
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+    using AutoMapper;
+    using GiftBox.Web.Areas.HomeAdministration.ViewModels.Categories;
+    using GiftBox.Web.Areas.HomeAdministration.ViewModels.Children;
     using GiftBox.Data.Models;
     using GiftBox.Web.Infrastructure.Mapping;
 

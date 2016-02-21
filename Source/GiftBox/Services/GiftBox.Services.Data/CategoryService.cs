@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using GiftBox.Data.Common.Repositories;
-using GiftBox.Data.Models;
-
-namespace GiftBox.Services.Data
+﻿namespace GiftBox.Services.Data
 {
+    using System.Linq;
+    using GiftBox.Data.Common.Repositories;
+    using GiftBox.Data.Models;
     using GiftBox.Services.Data.Contracts;
 
     public class CategoryService : ICategoryService

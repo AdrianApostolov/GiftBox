@@ -60,7 +60,7 @@
         public ActionResult ReadNeed([DataSourceRequest] DataSourceRequest request)
         {
             var allNeeds = this.needs
-                .GetAll(this.CurrentUser.HomeId)
+                .GetAllByHomeId(this.CurrentUser.HomeId)
                 .ProjectTo<DisplayNeedViewModel>();
 
             return this.Json(allNeeds.ToDataSourceResult(request), JsonRequestBehavior.AllowGet);

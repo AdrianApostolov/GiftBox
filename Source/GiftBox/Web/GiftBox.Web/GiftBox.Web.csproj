@@ -255,6 +255,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Account\ManageController.cs" />
     <Compile Include="Controllers\Institution\InstitutionController.cs" />
+    <Compile Include="Controllers\NeedController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -280,6 +281,7 @@
     <Compile Include="ViewModels\Institution\AddInstitutionViewModel.cs" />
     <Compile Include="ViewModels\Institution\DetailsInstitutionViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
+    <Compile Include="ViewModels\Need\NeedViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -471,6 +473,8 @@
     <Content Include="Views\Shared\_HomeDetailsPartial.cshtml" />
     <Content Include="stylecop.json" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Need\All.cshtml" />
+    <Content Include="Views\Need\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

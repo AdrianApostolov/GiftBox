@@ -36,12 +36,22 @@
 
         public IQueryable<Comment> GetHomeComments(int? id)
         {
-            var comments = this.comments
+            var allComments = this.comments
                 .All()
                 .Where(c => c.HomeId == id && !c.IsDeleted)
                 .OrderByDescending(c => c.CreatedOn);
 
-            return comments;
+            return allComments;
+        }
+
+        public IQueryable<Comment> GetNeedComments(int? id)
+        {
+            var allComments = this.comments
+               .All()
+               .Where(c => c.NeedId == id && !c.IsDeleted)
+               .OrderByDescending(c => c.CreatedOn);
+
+            return allComments;
         }
     }
 }

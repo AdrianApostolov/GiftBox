@@ -5,9 +5,11 @@
 
     public interface INeedService
     {
-        IQueryable<Need> GetAll(int homeId);
+        IQueryable<Need> GetAll();
 
-        Need GetById(int id);
+        IQueryable<Need> GetAllByHomeId(int homeId);
+
+        Need GetById(int? id);
 
         void Add(Need need);
 
