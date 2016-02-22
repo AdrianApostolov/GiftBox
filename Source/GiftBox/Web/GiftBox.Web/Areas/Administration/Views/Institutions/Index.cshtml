@@ -1,0 +1,29 @@
+﻿@using GiftBox.Web.Areas.Administration.ViewModels.Comments
+@using GiftBox.Web.Areas.Administration.ViewModels.Institution
+@using GiftBox.Web.Infrastructure.HtmlHelpers
+@using GiftBox.Web.ViewModels.Institution
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="card-panel hoverable">
+        @(Html.FullFeaturedGrid<AdministrationInstitutionViewModel>("grid", "Institutions", "Institutions", "Read", "Create", "Update", "Destroy",
+                          model =>
+                          {
+                              model.Id(m => m.Id);
+                          },
+                          cols =>
+                          {
+                              cols.Bound(c => c.Name);
+                              cols.Bound(c => c.ContactInfo);
+                              cols.Bound(c => c.PhoneNumber);
+                              cols.Bound(c => c.CreatedOn);
+                              cols.Bound(c => c.ModifiedOn);
+                              cols.Command(command =>
+                              {
+                                  command.Destroy();
+                              });
+                          }))
+    </div>
+</div>

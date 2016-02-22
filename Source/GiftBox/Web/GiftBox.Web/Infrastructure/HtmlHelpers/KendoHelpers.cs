@@ -52,7 +52,6 @@
                     .Batch(true)
                     .ServerOperation(false)
                     .PageSize(5)
-                    .Events(events => events.Error("error_handler"))
                     .Model(factory)
                     .Read(read => read.Action(readMethod, readControllerName))
                     .Create(create => create.Action(createMethod, controllerName))

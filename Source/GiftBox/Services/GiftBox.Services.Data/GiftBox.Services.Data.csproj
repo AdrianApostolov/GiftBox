@@ -63,11 +63,13 @@
     <Compile Include="Contracts\ICategoryService.cs" />
     <Compile Include="Contracts\IChildService.cs" />
     <Compile Include="Contracts\ICommentService.cs" />
+    <Compile Include="Contracts\IDataService.cs" />
     <Compile Include="Contracts\IGiftService.cs" />
     <Compile Include="Contracts\IHomeService.cs" />
     <Compile Include="Contracts\ILocationService.cs" />
     <Compile Include="Contracts\INeedService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
+    <Compile Include="DataService.cs" />
     <Compile Include="GiftService.cs" />
     <Compile Include="HomeService.cs" />
     <Compile Include="LocationService.cs" />

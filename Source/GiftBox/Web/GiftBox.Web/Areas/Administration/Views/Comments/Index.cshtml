@@ -1,0 +1,27 @@
+﻿@using GiftBox.Web.Areas.Administration.ViewModels.Comments
+@using GiftBox.Web.Infrastructure.HtmlHelpers
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="card-panel hoverable">
+        @(Html.FullFeaturedGrid<AdministrationCommentViewModel>("grid", "Comments", "Comments", "Read", "Create", "Update", "Destroy",
+                          model =>
+                          {
+                              model.Id(m => m.Id);
+                          },
+                          cols =>
+                          {
+                              cols.Bound(c => c.Id);
+                              cols.Bound(c => c.UserName);
+                              cols.Bound(c => c.Content);
+                              cols.Bound(c => c.CreatedOn);
+                              cols.Bound(c => c.ModifiedOn);
+                              cols.Command(command =>
+                              {
+                                  command.Destroy();
+                              });
+                          }))
+    </div>
+</div>

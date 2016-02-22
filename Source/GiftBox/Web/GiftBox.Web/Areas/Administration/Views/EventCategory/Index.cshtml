@@ -1,0 +1,26 @@
+﻿@using GiftBox.Web.Areas.Administration.ViewModels.EventCategory
+@using GiftBox.Web.Infrastructure.HtmlHelpers
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <div class="card-panel hoverable">
+        @(Html.FullFeaturedGrid<EventCategoryViewModel>("grid", "EventCategory", "EventCategory", "Read", "Create", "Update", "Destroy",
+                          model =>
+                          {
+                              model.Id(m => m.Id);
+                          },
+                          cols =>
+                          {
+                              cols.Bound(c => c.Id);
+                              cols.Bound(c => c.Name);
+                              cols.Bound(c => c.CreatedOn);
+                              cols.Bound(c => c.ModifiedOn);
+                              cols.Command(command =>
+                              {
+                                  command.Destroy();
+                              });
+                          }))
+    </div>
+</div>
