@@ -8,7 +8,7 @@
     using GiftBox.Web.Areas.Administration.ViewModels.Categories;
     using Kendo.Mvc.UI;
 
-    public class EventCategoryController : KendoGridAdministrationController
+    public class NeedCategoryController : KendoGridAdministrationController
     {
         // GET: Administration/EventCategory
         public ActionResult Index()
@@ -16,55 +16,55 @@
             return View();
         }
 
-        public EventCategoryController(IUsersService users, IDataService data) 
+        public NeedCategoryController(IUsersService users, IDataService data)
             : base(users, data)
         {
         }
 
         protected override IEnumerable GetData()
         {
-            return this.data.EventCategoryRepository.All();
+            return this.data.NeedCategoryRepository.All();
         }
 
         protected override T GetById<T>(object id)
         {
-            return this.data.EventCategoryRepository.GetById(id) as T;
+            return this.data.NeedCategoryRepository.GetById(id) as T;
         }
 
         [HttpPost]
-        public ActionResult Create([DataSourceRequest]DataSourceRequest request, IEnumerable<EventCategoryViewModel> models)
+        public ActionResult Create([DataSourceRequest]DataSourceRequest request, IEnumerable<NeedCategoryViewModel> models)
         {
             foreach (var model in models)
             {
-                var dbModel = base.Create<EventCategory>(model);
-                this.data.EventCategoryRepository.Add(dbModel);
-                this.data.EventCategoryRepository.SaveChanges();
+                var dbModel = base.Create<NeedCategory>(model);
+                this.data.NeedCategoryRepository.Add(dbModel);
+                this.data.NeedCategoryRepository.SaveChanges();
             }
 
             return this.GridOperation(models, request);
         }
 
         [HttpPost]
-        public ActionResult Update([DataSourceRequest]DataSourceRequest request, IEnumerable<EventCategoryViewModel> models)
+        public ActionResult Update([DataSourceRequest]DataSourceRequest request, IEnumerable<NeedCategoryViewModel> models)
         {
             foreach (var model in models)
             {
-                base.Update<EventCategory, EventCategoryViewModel>(model, model.Id);
-                this.data.EventCategoryRepository.SaveChanges();
+                base.Update<NeedCategory, NeedCategoryViewModel>(model, model.Id);
+                this.data.NeedCategoryRepository.SaveChanges();
             }
 
             return this.GridOperation(models, request);
         }
 
         [HttpPost]
-        public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, IEnumerable<EventCategoryViewModel> models)
+        public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, IEnumerable<NeedCategoryViewModel> models)
         {
             if (models != null)
             {
                 foreach (var model in models)
                 {
-                    this.data.EventCategoryRepository.Delete(model.Id);
-                    this.data.EventCategoryRepository.SaveChanges();
+                    this.data.NeedCategoryRepository.Delete(model.Id);
+                    this.data.NeedCategoryRepository.SaveChanges();
                 }
             }
 

@@ -1,4 +1,4 @@
-﻿@using GiftBox.Web.Areas.Administration.ViewModels.Categories
+﻿@using GiftBox.Web.Areas.Administration.ViewModels.Needs
 @using GiftBox.Web.Infrastructure.HtmlHelpers
 @{
     ViewBag.Title = "Index";
@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="card-panel hoverable">
-        @(Html.FullFeaturedGrid<EventCategoryViewModel>("grid", "EventCategory", "EventCategory", "Read", "Create", "Update", "Destroy",
+        @(Html.FullFeaturedGrid<AdministrationNeedViewModel>("grid", "Needs", "Needs", "Read", "Create", "Update", "Destroy",
                           model =>
                           {
                               model.Id(m => m.Id);
@@ -14,7 +14,8 @@
                           cols =>
                           {
                               cols.Bound(c => c.Id);
-                              cols.Bound(c => c.Name);
+                              cols.Bound(c => c.HomeName);
+                              cols.Bound(c => c.Description);
                               cols.Bound(c => c.CreatedOn);
                               cols.Bound(c => c.ModifiedOn);
                               cols.Command(command =>

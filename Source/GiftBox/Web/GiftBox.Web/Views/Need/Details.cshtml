@@ -12,7 +12,7 @@
             <section class="plans-container" id="plans">
                 <article class="col s6">
                     <div class="card hoverable">
-                        <div class="card-image purple waves-effect">
+                        <div class="card-image purple waves-effect z-depth-2">
                             <img src="@Model.ImageUrl" style="height: 250px;"/>
                         </div>
                         <div class="card-content">
@@ -26,7 +26,7 @@
                 </article>
             </section>
             <div class="col s6">
-                <div class="card-panel">
+                <div class="card-panel z-depth-2">
                     <section id="contact" class="map" style="height: 390px;">
                         <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=(@Model.Address.Replace(" ", "+"))&hl=bg&ie=UTF8&z=17&iwloc=&t=k&output=embed"></iframe>
                         <br/>

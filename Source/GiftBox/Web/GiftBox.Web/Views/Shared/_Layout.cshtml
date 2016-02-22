@@ -38,7 +38,7 @@
                 }
             </ul>
             @Html.Partial("_LoginPartial")
-            @*@if (User.IsInRole("HomeAdministrator") && User.Identity.IsAuthenticated)
+            @if (User.IsInRole("HomeAdministrator") && User.Identity.IsAuthenticated)
             {
                 <ul class="right hide-on-med-and-down col col s8 m8 l8">
                     <li>
@@ -56,21 +56,27 @@
                         </ul>
                     </li>
                 </ul>
-            }*@
+            }
             @if (User.IsInRole("Admin") && User.Identity.IsAuthenticated)
             {
                 <ul class="right hide-on-med-and-down col col s8 m8 l8">
                     <li>
-                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#\" data-activates="profile-dropdown">Administration<i style="position:relative; top:-15px" class="mdi-navigation-arrow-drop-down right "></i></a>
-                        <ul id="profile-dropdown" class="dropdown-content active" style="display: none;">
+                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#\" data-activates="admin-dropdown">Administration<i style="position:relative; top:-15px" class="mdi-navigation-arrow-drop-down right "></i></a>
+                        <ul id="admin-dropdown" class="dropdown-content active" style="display: none;">
                             <li>
-                                <a href=@Url.Action("Index", "Comments", new {area = "Administration"})>Comments</a>
+                                <a href=@Url.Action("Index", "Comment", new {area = "Administration"})><i class="mdi-communication-comment"></i>Comments</a>
                             </li>
                             <li>
-                                <a href=@Url.Action("Index", "Institutions", new {area = "Administration"})>Institutions</a>
+                                <a href=@Url.Action("Index", "Institutions", new {area = "Administration"})><i class="mdi-action-home"></i>Institutions</a>
                             </li>
                             <li>
-                                <a href=@Url.Action("Index", "EventCategory", new {area = "Administration"})>Event Categories</a>
+                                <a href=@Url.Action("Index", "EventCategory", new {area = "Administration"})><i class="mdi-action-receipt"></i>Event Categories</a>
+                            </li>
+                            <li>
+                                <a href=@Url.Action("Index", "NeedCategory", new {area = "Administration"})><i class="mdi-action-receipt"></i>Need Categories</a>
+                            </li>
+                            <li>
+                                <a href=@Url.Action("Index", "Needs", new {area = "Administration"})><i class="mdi-file-attachment"></i>Needs</a>
                             </li>
                         </ul>
                     </li>

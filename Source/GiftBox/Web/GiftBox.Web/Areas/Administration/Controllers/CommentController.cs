@@ -11,9 +11,9 @@ using Kendo.Mvc.UI;
 
 namespace GiftBox.Web.Areas.Administration.Controllers
 {
-    public class CommentsController : KendoGridAdministrationController
+    public class CommentController : KendoGridAdministrationController
     {
-        public CommentsController(IUsersService users, IDataService data)
+        public CommentController(IUsersService users, IDataService data)
             : base(users, data)
         {
         }

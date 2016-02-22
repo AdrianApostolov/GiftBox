@@ -1,4 +1,4 @@
-﻿namespace GiftBox.Web.Areas.Administration.ViewModels.EventCategory
+﻿namespace GiftBox.Web.Areas.Administration.ViewModels.Categories
 {
     using GiftBox.Web.Areas.Administration.ViewModels.Base;
     using GiftBox.Web.Infrastructure.Mapping;
