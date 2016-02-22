@@ -1,4 +1,6 @@
-﻿namespace GiftBox.Web.Areas.HomeAdministration.Controllers
+﻿using GiftBox.Web.Infrastructure.Caching;
+
+namespace GiftBox.Web.Areas.HomeAdministration.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
@@ -22,14 +24,22 @@
         private readonly IGiftService gifts;
         private readonly INeedService needs;
         private readonly ICategoryService categories;
+        private readonly InMemoryCache cache;
 
-        public ManageController(IUsersService users, IChildService children, IGiftService gifts, ICategoryService categories, INeedService needs)
+        public ManageController(
+            IUsersService users, 
+            IChildService children, 
+            IGiftService gifts, 
+            ICategoryService categories, 
+            INeedService needs,
+            InMemoryCache cache)
             : base(users)
         {
             this.children = children;
             this.gifts = gifts;
             this.categories = categories;
             this.needs = needs;
+            this.cache = cache;
         }
         
         [HttpGet]
@@ -72,13 +82,13 @@
                 .GetAll(this.CurrentUser.HomeId)
                 .ProjectTo<DisplayChildViewModel>();
 
-            var eventCategory = this.categories
+            var eventCategory = this.cache.Get("eventCategories", () => this.categories
                 .GetEventCategories()
-                .ProjectTo<DisplayEventCategoryViewModel>();
+                .ProjectTo<DisplayEventCategoryViewModel>());
 
-            var needsCategory = this.categories
+            var needsCategory = this.cache.Get("needsCategories", () => this.categories
                 .GetNeedCategories()
-                .ProjectTo<DisplayNeedCategoryViewModel>();
+                .ProjectTo<DisplayNeedCategoryViewModel>());
 
             this.ViewData["children"] = childrenAll;
             this.ViewData["defaultChild"] = childrenAll.Any() ? childrenAll.First() : null;

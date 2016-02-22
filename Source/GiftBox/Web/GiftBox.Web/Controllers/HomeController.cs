@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper.QueryableExtensions;
-using GiftBox.Common;
-using GiftBox.Services.Data.Contracts;
-using GiftBox.Web.Infrastructure.HtmlHelpers;
-using GiftBox.Web.ViewModels.Institution;
-using PagedList;
-
-namespace GiftBox.Web.Controllers
+﻿namespace GiftBox.Web.Controllers
 {
+    using System.Linq;
+    using System.Web.Mvc;
+    using AutoMapper.QueryableExtensions;
+    using GiftBox.Common;
+    using GiftBox.Services.Data.Contracts;
+    using GiftBox.Web.Infrastructure.HtmlHelpers;
+    using GiftBox.Web.ViewModels.Institution;
+    using PagedList;
+
     public class HomeController : Controller
     {
         private const int PageSize = 6;

@@ -2,7 +2,7 @@
 using GiftBox.Data;
 using GiftBox.Data.Migrations;
 
-namespace GiftBox.Web.App_Start
+namespace GiftBox.Web
 {
     public class DatabaseConfig
     {

@@ -13,7 +13,6 @@
             this.locations = locations;
         }
 
-
         public void Add(Location location)
         {
             this.locations.Add(location);
