@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-    @Styles.Render("~/Content/kendo/css")
+    @RenderSection("kendo", false)
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     <link href="http://demo.geekslabs.com/materialize/v3.1/js/plugins/animate-css/animate.css" rel="stylesheet"/>
+    @Styles.Render("~/Content/css")
 </head>
 <body>
     <nav style="height: 50px; line-height: 50px;">
@@ -87,12 +87,11 @@
     <div class="body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="center">
+            <a href="https://github.com/AdrianApostolov/GiftBox">&copy; 2016 Adrian Apostolov</a>
         </footer>
     </div>
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/kendo")
     @RenderSection("scripts", required: false)
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>$(".button-collapse").sideNav();</script>

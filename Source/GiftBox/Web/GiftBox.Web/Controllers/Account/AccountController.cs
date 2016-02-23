@@ -87,6 +87,7 @@
             switch (result)
             {
                 case SignInStatus.Success:
+                    this.TempData["Success"] = "Welcome back " + model.Username + "!";
                     return this.RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return this.View("Lockout");

@@ -17,5 +17,7 @@ namespace GiftBox.Web.Areas.Administration.ViewModels.Institution
         public string PhoneNumber { get; set; }
 
         public string ContactInfo { get; set; }
+
+        public bool IsApproved { get; set; }
     }
 }

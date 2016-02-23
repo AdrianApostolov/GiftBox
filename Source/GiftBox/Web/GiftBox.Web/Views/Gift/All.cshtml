@@ -17,7 +17,6 @@
     <div id="ajax-search-results"></div>
     @Html.Partial(GlobalConstants.ListGiftsPartial, Model)
 </div>
-
 @section scripts
 {
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
@@ -26,5 +25,48 @@
         $(document).ready(function () {
             $('select').material_select();
         });
+
+
+        var page = 0,
+   inCallback = false,
+   hasReachedEndOfInfiniteScroll = false;
+
+        var scrollHandler = function () {
+            if (hasReachedEndOfInfiniteScroll == false &&
+                    ($(window).scrollTop() == $(document).height() - $(window).height())) {
+                loadMoreToInfiniteScrollTable(moreRowsUrl);
+            }
+        }
+
+        function loadMoreToInfiniteScrollTable(loadMoreRowsUrl) {
+            if (page > -1 && !inCallback) {
+                inCallback = true;
+                page++;
+                $.ajax({
+                    type: 'GET',
+                    url: loadMoreRowsUrl,
+                    data: { page: page },
+                    success: function (data, textstatus) {
+                        if (data != '') {
+                            $("#all-gifts").html(data).show();
+                        }
+                        else {
+                            page = -1;
+                        }
+
+                        inCallback = false;
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    }
+                });
+            }
+        }
+
+        function showNoMoreRecords() {
+            hasReachedEndOfInfiniteScroll = true;
+        }
+
+        var moreRowsUrl = "/Gift/InfiniteScroll";
+        $(window).scroll(scrollHandler);
     </script>
 }

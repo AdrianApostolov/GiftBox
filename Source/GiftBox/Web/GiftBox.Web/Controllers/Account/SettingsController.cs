@@ -95,7 +95,7 @@
                 this.TempData["Success"] = GlobalConstants.UpdateImageMessage;
             }
 
-            return this.RedirectToAction("UpdateProfile");
+            return this.RedirectToAction("UpdateProfile", this.CurrentUser.Id);
         }
     }
 }

@@ -102,6 +102,12 @@
     </div>
 
 </div>
+
+@section kendo{
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/kendo")
+}
+
 @section scripts{
     <script type="text/javascript">
         function error_handler(e) {

@@ -9,21 +9,41 @@
 <div class="container">
     <div class="card-panel hoverable">
         @(Html.FullFeaturedGrid<AdministrationInstitutionViewModel>("grid", "Institutions", "Institutions", "Read", "Create", "Update", "Destroy",
-                          model =>
-                          {
-                              model.Id(m => m.Id);
-                          },
-                          cols =>
-                          {
-                              cols.Bound(c => c.Name);
-                              cols.Bound(c => c.ContactInfo);
-                              cols.Bound(c => c.PhoneNumber);
-                              cols.Bound(c => c.CreatedOn);
-                              cols.Bound(c => c.ModifiedOn);
-                              cols.Command(command =>
-                              {
-                                  command.Destroy();
-                              });
-                          }))
+              model =>
+              {
+                  model.Id(m => m.Id);
+              },
+              cols =>
+              {
+                  cols.Bound(c => c.Name);
+                  cols.Bound(c => c.ContactInfo);
+                  cols.Bound(c => c.PhoneNumber);
+                  cols.Bound(c => c.CreatedOn);
+                  cols.Bound(c => c.ModifiedOn);
+                  cols.Bound(c => c.IsApproved).ClientTemplate("<input type='checkbox' #= IsApproved ? checked='checked':'' # class='chkbx checkbox' />");
+                  cols.Command(command =>
+                  {
+                      command.Destroy();
+                  });
+              }))
     </div>
 </div>
+
+@section kendo{
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/kendo")
+}
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $('#grid').on('click', '.chkbx', function () {
+                var checked = $(this).is(':checked');
+                var grid = $('#grid').data().kendoGrid;
+                var dataItem = grid.dataItem($(this).closest('tr'));
+                dataItem.set('IsApproved', checked);
+            })
+        })
+    </script>
+}
