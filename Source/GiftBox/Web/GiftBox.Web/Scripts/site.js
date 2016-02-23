@@ -1,6 +1,7 @@
 ﻿(function () {
     $('#searchInput').on('input', (function () {
-        var controller = '/Home';
+        var controller = $(location).attr('pathname') === "/" ? "/Home" : "/Gift";
+
         var url = controller + '/Search';
         if (this.value.length >= 2) {
             var query = $('#searchInput').val();
@@ -22,4 +23,10 @@
             $("#ajax-search-results").hide();
         }
     }));
+})();
+
+(function () {
+    $('#categories').change(function () {
+        $(this).parents('form').submit();
+    });
 })();

@@ -1,0 +1,14 @@
+﻿@using GiftBox.Common
+@using GiftBox.Web.ViewModels
+@model GiftBox.Web.Views.Categories.ListEventCategoryViewModel
+@using (Ajax.BeginForm("FilterByEventCategory", "Gift",
+                    new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "all-gifts",
+                    }))
+{
+    @Html.EditorFor(m => m.CategoryId, new {ListItem = Model.Categories})
+}
+

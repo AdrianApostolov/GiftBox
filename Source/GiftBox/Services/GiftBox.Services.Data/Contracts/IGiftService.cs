@@ -11,6 +11,8 @@
 
         IQueryable<Gift> GetAllNotClaimed();
 
+        IQueryable<Gift> GetAllBySearchPattern(string pattern);
+
         Gift GetById(int id);
 
         void Add(Gift gift);

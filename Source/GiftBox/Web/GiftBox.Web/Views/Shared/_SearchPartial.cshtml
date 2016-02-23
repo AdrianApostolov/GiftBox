@@ -1,10 +1,11 @@
-﻿@using (Html.BeginForm("Index", null, FormMethod.Get))
+﻿@model GiftBox.Web.ViewModels.SearchViewModel
+@using (Html.BeginForm(Model.Action, null, FormMethod.Get))
 {
     <div class="row" id="search-row">
-        <div class="input-field col offset-s3 s4">
+        <div class="input-field col s8">
             <i class="mdi-action-search prefix"></i>
             <input type="text" name="searchInput" id="searchInput" />
-            <label>Search by home name or city</label>
+            <label>@Model.Label</label>
         </div>
         <div class="col s2">
             <button id="btnSearch" class="btn btn-search deep-purple lighten-2">Search</button>

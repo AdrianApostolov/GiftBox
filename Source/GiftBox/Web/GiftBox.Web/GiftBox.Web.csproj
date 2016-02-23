@@ -295,6 +295,8 @@
     <Compile Include="ViewModels\Institution\DetailsInstitutionViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="ViewModels\Need\NeedViewModel.cs" />
+    <Compile Include="ViewModels\SearchViewModel.cs" />
+    <Compile Include="Views\Categories\ListEventCategoryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -495,6 +497,8 @@
     <Content Include="Views\Need\Details.cshtml" />
     <Content Include="Views\Shared\_ListNeedsPartial.cshtml" />
     <Content Include="Views\Shared\_ListGiftsPartial.cshtml" />
+    <Content Include="Views\Shared\_EventCategoriesPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DropDownList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

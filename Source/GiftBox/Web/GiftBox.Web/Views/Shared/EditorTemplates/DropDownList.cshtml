@@ -1,0 +1,5 @@
+﻿@model int
+
+@Html.LabelFor(m => m, "Sort By Categories", htmlAttributes: new { @class = "" })
+@Html.DropDownListFor(m => m, (IEnumerable<SelectListItem>) ViewBag.ListItem, new {@class = "select-dropdown", id = "categories"})
+@Html.ValidationMessageFor(m => m)

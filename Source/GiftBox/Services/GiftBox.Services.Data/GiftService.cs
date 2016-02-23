@@ -1,4 +1,6 @@
-﻿namespace GiftBox.Services.Data
+﻿using System.Data.Entity;
+
+namespace GiftBox.Services.Data
 {
     using System.Linq;
 
@@ -38,6 +40,17 @@
                 .Where(x => !x.Claimed);
 
             return allNotClaimed;
+        }
+
+        public IQueryable<Gift> GetAllBySearchPattern(string pattern)
+        {
+            var allGiftsBySearchPattern = this.gifts
+                .All()
+                .Include(x => x.Child)
+                .Include(x => x.Child.Home)
+                .Where(x => x.Child.Home.Name.ToLower().Contains(pattern.ToLower()));
+
+            return allGiftsBySearchPattern;
         }
 
         public Gift GetById(int id)

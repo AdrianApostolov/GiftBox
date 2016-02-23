@@ -10,15 +10,19 @@
     using GiftBox.Common;
     using GiftBox.Web.ViewModels.Gift;
     using GiftBox.Services.Data.Contracts;
+    using GiftBox.Web.Infrastructure.Populators;
+    using GiftBox.Web.Views.Categories;
 
     public class GiftController : BaseController
     {
         private readonly IGiftService gifts;
+        private readonly IDropDownListPopulator populator;
 
-        public GiftController(IUsersService users, IGiftService gifts)
+        public GiftController(IUsersService users, IGiftService gifts, IDropDownListPopulator populator)
             : base(users)
         {
             this.gifts = gifts;
+            this.populator = populator;
         }
 
         [HttpGet]
@@ -63,6 +67,51 @@
                 .FirstOrDefault(x => x.Id == id);
 
             return currentGift;
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        public ActionResult GetEventCategoriesPartial()
+        {
+            var viewModel = new ListEventCategoryViewModel
+            {
+                Categories = this.populator.GetEventCategories(),
+            };
+
+            return this.PartialView(GlobalConstants.EventsCategoriesListPartial, viewModel);
+        }
+
+        [HttpGet]
+        public ActionResult FilterByEventCategory(int categoryId)
+        {
+            var allGiftsByCategory = this.gifts
+               .GetAllNotClaimed()
+               .ProjectTo<GiftViewModel>();
+
+            if (categoryId > -1)
+            {
+                allGiftsByCategory = this.gifts
+               .GetAllNotClaimed()
+               .Where(x => x.EventCategoryId == categoryId)
+               .ProjectTo<GiftViewModel>();
+            }
+
+            return this.PartialView(GlobalConstants.ListGiftsPartial, allGiftsByCategory);
+        }
+
+        [HttpGet]
+        public ActionResult Search(string searchInput)
+        {
+            var allGifts = this.gifts.GetAllBySearchPattern(searchInput);
+              
+            if (!allGifts.Any())
+            {
+                return this.Content(GlobalConstants.NoPagesFound);
+            }
+
+            var viewModel = allGifts.ProjectTo<GiftViewModel>();
+
+            return this.PartialView(GlobalConstants.ListGiftsPartial, viewModel);
         }
     }
 }
