@@ -7,6 +7,8 @@ namespace GiftBox.Services.Data.Contracts
     {
         IQueryable<Home> GetAll();
 
+        IQueryable<Home> GetAllApproved();
+
         IQueryable<Home> GetHomeById(int? id);
 
         void Add(Home home);

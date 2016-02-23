@@ -75,7 +75,7 @@
         {
             var viewModel = new ListEventCategoryViewModel
             {
-                Categories = this.populator.GetEventCategories(),
+                Categories = this.populator.GetEventCategories()
             };
 
             return this.PartialView(GlobalConstants.EventsCategoriesListPartial, viewModel);

@@ -12,7 +12,7 @@
     public class HomeController : Controller
     {
         private const int PageSize = 6;
-        private const int AjaxSearchResult = 3;
+        private const int AjaxSearchResult = 6;
         private IHomeService homes;
 
         public HomeController(IHomeService homes)
@@ -23,7 +23,7 @@
         [HttpGet]
         public ActionResult Index(string searchInput, string currentFilter, int? page)
         {
-            var allHomes = this.homes.GetAll();
+            var allHomes = this.homes.GetAllApproved();
 
             if (string.IsNullOrEmpty(searchInput))
             {

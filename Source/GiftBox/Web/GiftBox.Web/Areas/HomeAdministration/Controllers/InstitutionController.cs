@@ -25,6 +25,12 @@
         [HttpGet]
         public ActionResult Details()
         {
+
+            if (this.CurrentUser.HomeId == 0)
+            {
+                return this.RedirectToAction("Create");
+            }
+
             var home = this.homes
                 .GetHomeById(this.CurrentUser.HomeId)
                 .ProjectTo<DetailsInstitutionViewModel>()

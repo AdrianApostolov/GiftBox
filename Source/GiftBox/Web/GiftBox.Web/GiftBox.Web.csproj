@@ -297,6 +297,7 @@
     <Compile Include="ViewModels\Need\NeedViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
     <Compile Include="Views\Categories\ListEventCategoryViewModel.cs" />
+    <Compile Include="Views\Categories\ListNeedCategoryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -499,6 +500,7 @@
     <Content Include="Views\Shared\_ListGiftsPartial.cshtml" />
     <Content Include="Views\Shared\_EventCategoriesPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DropDownList.cshtml" />
+    <Content Include="Views\Shared\_NeedsCategoriesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -576,7 +578,7 @@
      if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
      start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
    </PostBuildEvent>
-</PropertyGroup>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -22,6 +22,15 @@
             return allHomes;
         }
 
+        public IQueryable<Home> GetAllApproved()
+        {
+            var allApprovedHomes = this.homes
+                .All()
+                .Where(x => x.IsApproved);
+
+            return allApprovedHomes;
+        }
+
         public IQueryable<Home> GetHomeById(int? id)
         {
             var home = this.homes

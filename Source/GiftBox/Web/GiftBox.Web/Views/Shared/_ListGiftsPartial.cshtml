@@ -23,9 +23,12 @@
                                 </ul>
                             </div>
                             <div class="card-action center-align">
-                                @using (Html.BeginForm("DonateGift", "Gift", new { id = @gift.Id }, FormMethod.Post))
+                                @if (User.Identity.IsAuthenticated)
                                 {
-                                    @Html.Submit("Donate Gift", new { @class = "waves-effect waves-light  btn" })
+                                     using (Html.BeginForm("DonateGift", "Gift", new {id = @gift.Id}, FormMethod.Post))
+                                     {
+                                         @Html.Submit("Donate Gift", new {@class = "waves-effect waves-light  btn"})
+                                     }
                                 }
                             </div>
                         </div>

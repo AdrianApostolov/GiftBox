@@ -4,4 +4,23 @@
     ViewBag.Title = "All";
 }
 
-@Html.Partial(GlobalConstants.ListNeedsPartial, Model)
+<div class="row">
+    <div class="col s3 offset-s4">
+        @{ Html.RenderAction("GetNeedCategoriesPartial");}
+    </div>
+</div>
+
+<div id="all-needs">
+    @Html.Partial(GlobalConstants.ListNeedsPartial, Model)
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+    @Scripts.Render("~/bundles/custom")
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+    </script>
+}

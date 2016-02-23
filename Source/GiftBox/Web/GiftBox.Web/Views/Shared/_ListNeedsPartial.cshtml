@@ -7,21 +7,16 @@
     @foreach (var need in Model)
     {
         <a href="/Need/Details/@need.Id">
-            <div class="col s4">
-                <div id="flight-card" class="card hoverable bounceInDown animated">
-                    <div class="card-header deep-purple lighten-2">
-                        <div class="card-title white-text">
-                            <h4 class="flight-card-title center">@need.HomeName</h4>
-                            <p class="flight-card-date center">@need.Category</p>
-                        </div>
-                    </div>
-                    <div class="card-content-bg">
-                        <div class="card-content">
-                            <p>@need.Description</p>
-                            <img style="width: 100%" src="@need.ImageUrl" />
-                            <p class="right"><b>Click for details</b></p>
-                        </div>
-                    </div>
+            <div style="position: relative" class="col s6">
+                <div class="card hoverable bounceInLeft animated">
+                    <figure class="effect-marley">
+                        <img style="width: 100%" src="@need.ImageUrl" alt="img11">
+                        <figcaption>
+                            <h2><span class="white-text">@need.HomeName</span></h2>
+                            <p class="white-text">@need.Description</p>
+                            <a href="/Need/Details/@need.Id">View more</a>
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
         </a>

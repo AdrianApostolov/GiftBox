@@ -32,6 +32,7 @@ namespace GiftBox.Common
         public const string ListGiftsPartial = "_ListGiftsPartial";
         public const string ListNeedsPartial = "_ListNeedsPartial";
         public const string EventsCategoriesListPartial = "_EventCategoriesPartial";
+        public const string NeedsCategoriesListPartial = "_NeedsCategoriesPartial";
 
         public const string PageNotFound = "The page you're looking for wasn't found.";
         public const string InvalidComment = "Invalid comment";

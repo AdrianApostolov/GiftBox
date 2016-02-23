@@ -3,13 +3,17 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
+
     using GiftBox.Data.Models;
     using GiftBox.Services.Data.Contracts;
     using GiftBox.Web.Controllers;
     using GiftBox.Web.Infrastructure.Mapping;
     using GiftBox.Web.ViewModels.Need;
+    using GiftBox.Web.Infrastructure.Populators;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
+
     using TestStack.FluentMVCTesting;
 
     [TestClass]
@@ -28,11 +32,12 @@
         {
             var usersService = new Mock<IUsersService>();
             var needsService = new Mock<INeedService>();
+            var dropDownPopulator = new Mock<IDropDownListPopulator>();
 
             needsService.Setup(x => x.GetAll())
                 .Returns(new List<Need>().AsQueryable());
 
-            var controller = new NeedController(usersService.Object, needsService.Object);
+            var controller = new NeedController(usersService.Object, needsService.Object, dropDownPopulator.Object);
             controller.WithCallTo(x => x.All())
                 .ShouldRenderView("All");
         }
@@ -42,11 +47,12 @@
         {
             var usersService = new Mock<IUsersService>();
             var needsService = new Mock<INeedService>();
+            var dropDownPopulator = new Mock<IDropDownListPopulator>();
 
             needsService.Setup(x => x.GetAll())
                 .Returns(new List<Need>() { new Need() { Id = 1 } }.AsQueryable());
 
-            var controller = new NeedController(usersService.Object, needsService.Object);
+            var controller = new NeedController(usersService.Object, needsService.Object, dropDownPopulator.Object);
             controller.WithCallTo(x => x.Details(1))
                 .ShouldRenderView("Details");
         }
@@ -56,11 +62,12 @@
         {
             var usersService = new Mock<IUsersService>();
             var needsService = new Mock<INeedService>();
+            var dropDownPopulator = new Mock<IDropDownListPopulator>();
 
             needsService.Setup(x => x.GetAll())
                 .Returns(new List<Need>() { new Need() { Id = 1, Description = "Some description"} }.AsQueryable());
 
-            var controller = new NeedController(usersService.Object, needsService.Object);
+            var controller = new NeedController(usersService.Object, needsService.Object, dropDownPopulator.Object);
             controller.WithCallTo(x => x.Details(1))
                 .ShouldRenderView("Details")
                 .WithModel<NeedViewModel>(viewModel =>
@@ -75,11 +82,12 @@
         {
             var usersService = new Mock<IUsersService>();
             var needsService = new Mock<INeedService>();
+            var dropDownPopulator = new Mock<IDropDownListPopulator>();
 
             needsService.Setup(x => x.GetAll())
                 .Returns(new List<Need>().AsQueryable());
 
-            var controller = new NeedController(usersService.Object, needsService.Object);
+            var controller = new NeedController(usersService.Object, needsService.Object, dropDownPopulator.Object);
             controller.WithCallTo(x => x.Details(It.IsAny<int>()))
                 .ShouldRenderView("Details");
         }
@@ -90,11 +98,12 @@
         {
             var usersService = new Mock<IUsersService>();
             var needsService = new Mock<INeedService>();
+            var dropDownPopulator = new Mock<IDropDownListPopulator>();
 
             needsService.Setup(x => x.GetAll())
                 .Returns(new List<Need>().AsQueryable());
 
-            var controller = new NeedController(usersService.Object, needsService.Object);
+            var controller = new NeedController(usersService.Object, needsService.Object, dropDownPopulator.Object);
             controller.WithCallTo(x => x.Details(null))
                 .ShouldRenderView("Details");
         }

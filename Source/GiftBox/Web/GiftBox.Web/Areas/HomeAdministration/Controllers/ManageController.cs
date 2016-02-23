@@ -45,6 +45,11 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            if (this.CurrentUser.HomeId == 0)
+            {
+                return this.RedirectToAction("Create", "Institution");
+            }
+
             this.PopulateDropDowns();
             return this.View();
         }
