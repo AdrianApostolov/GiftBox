@@ -10,6 +10,8 @@
     {
         public int Id { get; set; }
 
+        [Required]
+        [MaxLength(100)]
         public string AditionalInfo { get; set; }
 
         public DateTime ExpirationDate { get; set; }

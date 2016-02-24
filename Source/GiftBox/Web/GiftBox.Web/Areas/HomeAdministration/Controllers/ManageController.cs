@@ -1,6 +1,4 @@
-﻿using GiftBox.Web.Infrastructure.Caching;
-
-namespace GiftBox.Web.Areas.HomeAdministration.Controllers
+﻿namespace GiftBox.Web.Areas.HomeAdministration.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
@@ -12,6 +10,8 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
     using GiftBox.Web.Areas.HomeAdministration.ViewModels.Children;
     using GiftBox.Web.Areas.HomeAdministration.ViewModels.Gift;
     using GiftBox.Web.Areas.HomeAdministration.ViewModels.Needs;
+    using GiftBox.Web.Infrastructure.Caching;
+
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 
@@ -87,7 +87,7 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
                 .GetAll(this.CurrentUser.HomeId)
                 .ProjectTo<DisplayChildViewModel>();
 
-            var eventCategory = this.cache.Get("eventCategories", () => this.categories
+            var eventCategory = this.cache.Get("eventsCategories", () => this.categories
                 .GetEventCategories()
                 .ProjectTo<DisplayEventCategoryViewModel>(), 60 * 60);
 

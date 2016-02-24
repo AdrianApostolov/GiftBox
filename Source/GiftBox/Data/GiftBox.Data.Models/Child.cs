@@ -1,4 +1,6 @@
-﻿namespace GiftBox.Data.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GiftBox.Data.Models
 {
     using System;
     using System.Collections.Generic;
@@ -12,11 +14,15 @@
         {
             this.gifts = new HashSet<Gift>();
         }
-
+        
         public int Id { get; set; }
 
+        [Required]
+        [MinLength(2)]
+        [MaxLength(50)]
         public string Name { get; set; }
 
+        [Required]
         public int Age { get; set; }
 
         public int HomeId { get; set; }

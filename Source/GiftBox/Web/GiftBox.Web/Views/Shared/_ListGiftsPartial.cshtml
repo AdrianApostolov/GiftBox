@@ -25,8 +25,9 @@
                             <div class="card-action center-align">
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                     using (Html.BeginForm("DonateGift", "Gift", new {id = @gift.Id}, FormMethod.Post))
-                                     {
+                                    using (Html.BeginForm("DonateGift", "Gift", new { id = @gift.Id }, FormMethod.Post))
+                                    {
+                                         @Html.AntiForgeryToken()
                                          @Html.Submit("Donate Gift", new {@class = "waves-effect waves-light  btn"})
                                      }
                                 }

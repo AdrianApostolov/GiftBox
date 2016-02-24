@@ -20,14 +20,17 @@
 
         [StringLength(50)]
         [MinLength(2)]
+        [Required]
         public string FirstName { get; set; }
 
         [StringLength(50)]
         [MinLength(2)]
+        [Required]
         public string LastName { get; set; }
 
         public int HomeId { get; set; }
 
+        [Required]
         public string UserRole { get; set; }
 
         public string ImageUrl { get; set; }

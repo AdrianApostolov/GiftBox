@@ -48,6 +48,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult DonateGift(int id)
         {
             var currentGift = this.GetCurrentGift(id);
