@@ -145,45 +145,12 @@ figure.effect-marley:hover p {
 	transform: translate3d(0,0,0);
 }
 
-.pace {
-  -webkit-pointer-events: none;
-  pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-.pace-inactive {
-  display: none;
-}
-
-.pace .pace-progress {
-  background: #29d;
-  position: fixed;
-  z-index: 2000;
-  top: 0;
-  right: 100%;
-  width: 100%;
-  height: 2px;
-}
-
-.pace .pace-progress-inner {
-  display: block;
-  position: absolute;
-  right: 0px;
-  width: 100px;
-  height: 100%;
-  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
-  opacity: 1.0;
-  -webkit-transform: rotate(3deg) translate(0px, -4px);
-  -moz-transform: rotate(3deg) translate(0px, -4px);
-  -ms-transform: rotate(3deg) translate(0px, -4px);
-  -o-transform: rotate(3deg) translate(0px, -4px);
-  transform: rotate(3deg) translate(0px, -4px);
-}
-
 .card .card-action {
     padding: 0 !important;
+}
+
+#homeDetailsImage {
+    height: 200px;
 }
 
 .text-long-shadow{text-shadow:#1d7d74 1px 1px,#1d7d74 2px 2px,#1d7d74 3px 3px,#1d7d74 4px 4px,#1d7d74 5px 5px,#1d7d74 6px 6px,#1d7d74 7px 7px,#1d7d74 8px 8px,#1d7d74 9px 9px,#1d7d74 10px 10px,#1d7d74 11px 11px,#1d7d74 12px 12px,#1d7d74 13px 13px,#1d7d74 14px 14px,#1d7d74 15px 15px,#1d7d74 16px 16px,#1d7d74 17px 17px,#1d7d74 18px 18px,#1d7d74 19px 19px,#1d7d74 20px 20px,#1d7d74 21px 21px,#208b81 22px 22px,#208b81 23px 23px,#208b81 24px 24px,#208b81 25px 25px,#208b81 26px 26px,#208b81 27px 27px,#208b81 28px 28px,#208b81 29px 29px,#208b81 30px 30px,#26a69a 31px 31px,#26a69a 32px 32px,#26a69a 33px 33px,#26a69a 34px 34px,#26a69a 35px 35px,#26a69a 36px 36px,#26a69a 37px 37px;background-color:#26a69a;width:100%;font-size:10rem;color:#fff !important;text-align:center;padding:20px 0 !important}.login-form{width:280px}.login-form-text{text-transform:uppercase;letter-spacing:2px;font-size:0.8rem}.profile-image-login{width:100px;height:100px !important}.login-text{margin-top:-6px;margin-left:-6px !important}

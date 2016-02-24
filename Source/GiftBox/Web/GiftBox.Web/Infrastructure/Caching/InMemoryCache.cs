@@ -1,21 +1,38 @@
 ﻿namespace GiftBox.Web.Infrastructure.Caching
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
     using System.Web;
+    using System.Web.Caching;
+
 
     public class InMemoryCache : ICacheService
     {
-        public T Get<T>(string cacheID, Func<T> getItemCallback) 
-            where T : class
+        private static readonly object LockObject = new object();
+
+        public T Get<T>(string itemName, Func<T> getDataFunc, int durationInSeconds)
         {
-            T item = HttpRuntime.Cache.Get(cacheID) as T;
-            if (item == null)
+            if (HttpRuntime.Cache[itemName] == null)
             {
-                item = getItemCallback();
-                HttpContext.Current.Cache.Insert(cacheID, item);
+                lock (LockObject)
+                {
+                    if (HttpRuntime.Cache[itemName] == null)
+                    {
+                        var data = getDataFunc();
+                        HttpRuntime.Cache.Insert(
+                            itemName,
+                            data,
+                            null,
+                            DateTime.Now.AddSeconds(durationInSeconds),
+                            Cache.NoSlidingExpiration);
+                    }
+                }
             }
 
-            return item;
+            return (T)HttpRuntime.Cache[itemName];
         }
 
         public void Clear(string cacheId)

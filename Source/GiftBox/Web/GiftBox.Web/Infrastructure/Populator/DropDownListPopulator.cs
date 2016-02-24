@@ -41,7 +41,7 @@ namespace GiftBox.Web.Infrastructure.Populators
                        }));
 
                     return categoriesList;
-                });
+                }, 60 * 60);
 
             return needCategories;
         }
@@ -67,7 +67,7 @@ namespace GiftBox.Web.Infrastructure.Populators
                        }));
 
                     return categoriesList;
-                });
+                }, 60 * 60);
 
             return eventsCategories;
         }

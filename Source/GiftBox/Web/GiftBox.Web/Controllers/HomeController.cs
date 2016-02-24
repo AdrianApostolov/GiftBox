@@ -9,25 +9,26 @@
     using GiftBox.Services.Data.Contracts;
     using GiftBox.Web.Infrastructure.HtmlHelpers;
     using GiftBox.Web.ViewModels.Institution;
+    using GiftBox.Web.Infrastructure.Caching;
 
     using PagedList;
 
     public class HomeController : BaseController
     {
-        private const int PageSize = 6;
-        private const int AjaxSearchResult = 6;
-        private IHomeService homes;
+        private readonly IHomeService homes;
+        private readonly ICacheService cache;
 
-        public HomeController(IUsersService users, IHomeService homes)
+        public HomeController(IUsersService users, IHomeService homes, ICacheService cache)
             : base(users)
         {
             this.homes = homes;
+            this.cache = cache;
         }
 
         [HttpGet]
         public ActionResult Index(string searchInput, string currentFilter, int? page)
         {
-            var allHomes = this.homes.GetAllApproved();
+            var allHomes = this.cache.Get("allHomes", () => this.homes.GetAllApproved(), 60*15);
 
             if (string.IsNullOrEmpty(searchInput))
             {
@@ -48,7 +49,7 @@
 
             int pageNumber = page ?? 1;
 
-            return this.View(viewModel.ToPagedList(pageNumber, PageSize));
+            return this.View(viewModel.ToPagedList(pageNumber, GlobalConstants.HomePageSize));
         }
 
         public ActionResult About()
@@ -79,7 +80,7 @@
 
             var viewModel = allHomes
                 .OrderByDescending(x => x.CreatedOn)
-                .Take(AjaxSearchResult)
+                .Take(GlobalConstants.AjaxSearchResult)
                 .ProjectTo<DetailsInstitutionViewModel>();
 
             return this.PartialView(GlobalConstants.HomesListPartial, viewModel.ToPagedList(1, int.MaxValue));

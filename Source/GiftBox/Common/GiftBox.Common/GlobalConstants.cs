@@ -34,5 +34,8 @@
 
         public const string PageNotFound = "The page you're looking for wasn't found.";
         public const string InvalidComment = "Invalid comment";
+
+        public const int HomePageSize = 6;
+        public const int AjaxSearchResult = 6;
     }
 }

@@ -14,6 +14,7 @@
     using GiftBox.Data.Models;
     using GiftBox.Services.Data.Contracts;
     using GiftBox.Web.ViewModels.Institution;
+    using GiftBox.Web.Infrastructure.Caching;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -33,11 +34,12 @@
         {
             var homeService = new Mock<IHomeService>();
             var usersService = new Mock<IUsersService>();
+            var cacheService = new Mock<ICacheService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(usersService.Object, homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object, cacheService.Object);
             controller.WithCallTo(x => x.Index(null, null, null))
                 .ShouldRenderView("Index");
         }
@@ -47,11 +49,12 @@
         {
             var homeService = new Mock<IHomeService>();
             var usersService = new Mock<IUsersService>();
+            var cacheService = new Mock<ICacheService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(usersService.Object, homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object, cacheService.Object);
             controller.WithCallTo(x => x.Index("someSearchInput", null, null))
                 .ShouldRenderView("Index");
         }
@@ -61,11 +64,12 @@
         {
             var homeService = new Mock<IHomeService>();
             var usersService = new Mock<IUsersService>();
+            var cacheService = new Mock<ICacheService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(usersService.Object, homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object, cacheService.Object);
             controller.WithCallTo(x => x.Index(null, "someFilter", null))
                 .ShouldRenderView("Index");
         }
@@ -75,11 +79,12 @@
         {
             var homeService = new Mock<IHomeService>();
             var usersService = new Mock<IUsersService>();
+            var cacheService = new Mock<ICacheService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(usersService.Object, homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object, cacheService.Object);
             controller.WithCallTo(x => x.Index(null, null, 5))
                 .ShouldRenderView("Index");
         }
@@ -89,11 +94,12 @@
         {
             var homeService = new Mock<IHomeService>();
             var usersService = new Mock<IUsersService>();
+            var cacheService = new Mock<ICacheService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(usersService.Object, homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object, cacheService.Object);
             controller.WithCallTo(x => x.Index("someInputSearch", "someFilter", 5))
                 .ShouldRenderView("Index");
         }
@@ -103,11 +109,12 @@
         {
             var homeService = new Mock<IHomeService>();
             var usersService = new Mock<IUsersService>();
+            var cacheService = new Mock<ICacheService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(usersService.Object, homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object, cacheService.Object);
             controller.WithCallTo(x => x.Index("someInputSearch", "someFilter", 5))
                 .ShouldRenderView("Index")
                 .WithModel<IPagedList<DetailsInstitutionViewModel>>()
@@ -119,11 +126,12 @@
         {
             var homeService = new Mock<IHomeService>();
             var usersService = new Mock<IUsersService>();
+            var cacheService = new Mock<ICacheService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(usersService.Object, homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object, cacheService.Object);
             controller.WithCallTo(x => x.Search("someSearchInput"))
                 .ShouldReturnContent("No pages found!");
         }

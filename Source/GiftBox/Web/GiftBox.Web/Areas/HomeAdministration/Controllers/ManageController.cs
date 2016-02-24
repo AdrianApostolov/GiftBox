@@ -89,11 +89,11 @@ namespace GiftBox.Web.Areas.HomeAdministration.Controllers
 
             var eventCategory = this.cache.Get("eventCategories", () => this.categories
                 .GetEventCategories()
-                .ProjectTo<DisplayEventCategoryViewModel>());
+                .ProjectTo<DisplayEventCategoryViewModel>(), 60 * 60);
 
             var needsCategory = this.cache.Get("needsCategories", () => this.categories
                 .GetNeedCategories()
-                .ProjectTo<DisplayNeedCategoryViewModel>());
+                .ProjectTo<DisplayNeedCategoryViewModel>(), 60 * 60);
 
             this.ViewData["children"] = childrenAll;
             this.ViewData["defaultChild"] = childrenAll.Any() ? childrenAll.First() : null;
