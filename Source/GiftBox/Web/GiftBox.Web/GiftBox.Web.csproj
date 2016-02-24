@@ -501,6 +501,7 @@
     <Content Include="Views\Shared\_EventCategoriesPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DropDownList.cshtml" />
     <Content Include="Views\Shared\_NeedsCategoriesPartial.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ExpirationDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

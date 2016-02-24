@@ -18,7 +18,7 @@
                                     <li>Institution: <a href=@Url.Action("Details", "Institution", new {area = "", id = @gift.ChildHomeId})>@gift.ChildHomeName</a></li>
                                     <li>Child: <b>@gift.ChildName</b></li>
                                     <li>Gift: <b>@gift.AditionalInfo</b></li>
-                                    <li>Expiration Data: <b style="color: red">@gift.ExpirationDate</b></li>
+                                    <li>Expiration Data: @Html.DisplayFor(m => gift.ExpirationDate, "ExpirationDate")</li>
                                     <li>Present for: <b>@gift.Category</b></li>
                                 </ul>
                             </div>
