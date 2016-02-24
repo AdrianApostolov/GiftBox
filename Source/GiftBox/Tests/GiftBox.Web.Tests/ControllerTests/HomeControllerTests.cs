@@ -32,11 +32,12 @@
         public void IndexShoudWorkCorrectlyWithoutParameters()
         {
             var homeService = new Mock<IHomeService>();
+            var usersService = new Mock<IUsersService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object);
             controller.WithCallTo(x => x.Index(null, null, null))
                 .ShouldRenderView("Index");
         }
@@ -45,11 +46,12 @@
         public void IndexShoudWorkCorrectlyOnlyWithSearchParameter()
         {
             var homeService = new Mock<IHomeService>();
+            var usersService = new Mock<IUsersService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object);
             controller.WithCallTo(x => x.Index("someSearchInput", null, null))
                 .ShouldRenderView("Index");
         }
@@ -58,11 +60,12 @@
         public void IndexShoudWorkCorrectlyOnlyWithCurrentFilterParameter()
         {
             var homeService = new Mock<IHomeService>();
+            var usersService = new Mock<IUsersService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object);
             controller.WithCallTo(x => x.Index(null, "someFilter", null))
                 .ShouldRenderView("Index");
         }
@@ -71,11 +74,12 @@
         public void IndexShoudWorkCorrectlyOnlyWithPageParameter()
         {
             var homeService = new Mock<IHomeService>();
+            var usersService = new Mock<IUsersService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object);
             controller.WithCallTo(x => x.Index(null, null, 5))
                 .ShouldRenderView("Index");
         }
@@ -84,11 +88,12 @@
         public void IndexShoudWorkCorrectlyWithAllParameters()
         {
             var homeService = new Mock<IHomeService>();
+            var usersService = new Mock<IUsersService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object);
             controller.WithCallTo(x => x.Index("someInputSearch", "someFilter", 5))
                 .ShouldRenderView("Index");
         }
@@ -97,11 +102,12 @@
         public void IndexShoudRenderViewWithCorrectModelAndNoModelErrors()
         {
             var homeService = new Mock<IHomeService>();
+            var usersService = new Mock<IUsersService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object);
             controller.WithCallTo(x => x.Index("someInputSearch", "someFilter", 5))
                 .ShouldRenderView("Index")
                 .WithModel<IPagedList<DetailsInstitutionViewModel>>()
@@ -112,11 +118,12 @@
         public void SearchShoudReturnNoPagesFoundContentIfThereAreNoHomes()
         {
             var homeService = new Mock<IHomeService>();
+            var usersService = new Mock<IUsersService>();
 
             homeService.Setup(x => x.GetAll())
                 .Returns(new List<Home>().AsQueryable());
 
-            var controller = new HomeController(homeService.Object);
+            var controller = new HomeController(usersService.Object, homeService.Object);
             controller.WithCallTo(x => x.Search("someSearchInput"))
                 .ShouldReturnContent("No pages found!");
         }
