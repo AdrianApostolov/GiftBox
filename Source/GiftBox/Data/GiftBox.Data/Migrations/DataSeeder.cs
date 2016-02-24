@@ -26,6 +26,7 @@ namespace GiftBox.Data.Migrations
             var admin = new User
             {
                 FirstName = "Adrian",
+                UserRole = "Admin",
                 LastName = "Apostolov",
                 Email = AdminEmail,
                 UserName = "Adrian.Apostolov",
