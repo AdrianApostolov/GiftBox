@@ -28,3 +28,13 @@ If you're a person, willing to take part in the initiative, browse through all t
 - [jQuery](http://jquery.com/)
 
 Demo: [https://giftbox.apphb.com](https://giftbox.apphb.com/)
+
+## GiftBOX - User Interface
+<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture1.PNG" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture2.PNG" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture3.PNG" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture4.PNG" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture5.PNG" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture6.PNG" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture7.PNG" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/AdrianApostolov/GiftBox/master/Images/Capture8.PNG" /></p>
