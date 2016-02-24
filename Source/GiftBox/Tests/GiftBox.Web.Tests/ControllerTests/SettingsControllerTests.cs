@@ -1,18 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web;
 using GiftBox.Data.Models;
 using GiftBox.Services.Data.Contracts;
-using GiftBox.Web.Areas.HomeAdministration.Controllers;
 using GiftBox.Web.Controllers;
 using GiftBox.Web.Controllers.Account;
 using GiftBox.Web.Infrastructure.Mapping;
-using Kendo.Mvc.UI;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using TestStack.FluentMVCTesting;
-using ManageController = GiftBox.Web.Areas.HomeAdministration.Controllers.ManageController;
 
 namespace GiftBox.Web.Tests.ControllerTests
 {

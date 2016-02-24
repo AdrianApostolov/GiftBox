@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using System.Web.Http;
 using GiftBox.Web.Infrastructure.Mapping;
 
 namespace GiftBox.Web
