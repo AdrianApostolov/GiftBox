@@ -13,6 +13,7 @@
     using GiftBox.Web.Infrastructure.Populators;
     using GiftBox.Web.Views.Categories;
 
+    using PagedList;
     public class GiftController : BaseController
     {
         private readonly IGiftService gifts;
@@ -26,13 +27,16 @@
         }
 
         [HttpGet]
-        public ActionResult All()
+        public ActionResult All(int? page)
         {
             var allGifts = this.gifts
                 .GetAllNotClaimed()
+                .OrderBy(x => x.ExpirationDate)
                 .ProjectTo<GiftViewModel>();
 
-            return this.View(allGifts);
+            int pageNumber = page ?? 1;
+
+            return this.View(allGifts.ToPagedList(pageNumber, 4));
         }
 
         [HttpGet]

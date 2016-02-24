@@ -40,7 +40,7 @@ namespace GiftBox.Web.Tests.ControllerTests
                 .Returns(new List<Gift>().AsQueryable());
 
             var controller = new GiftController(userServerce.Object, giftService.Object, dropDownPopupator.Object);
-            controller.WithCallTo(x => x.All())
+            controller.WithCallTo(x => x.All(1))
                 .ShouldRenderView("All");
         }
 
@@ -55,7 +55,7 @@ namespace GiftBox.Web.Tests.ControllerTests
                 .Returns(new List<Gift>().AsQueryable());
 
             var controller = new GiftController(userServerce.Object, giftService.Object, dropDownPopupator.Object);
-            controller.WithCallTo(x => x.All())
+            controller.WithCallTo(x => x.All(1))
                 .ShouldRenderView("All")
                 .WithModel<IEnumerable<GiftViewModel>>()
                 .AndNoModelErrors();

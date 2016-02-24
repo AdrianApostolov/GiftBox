@@ -1,17 +1,20 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using GiftBox.Common;
-using GiftBox.Web.Infrastructure.Populators;
-using GiftBox.Web.ViewModels.Gift;
-using GiftBox.Web.Views.Categories;
-
-namespace GiftBox.Web.Controllers
+﻿namespace GiftBox.Web.Controllers
 {
     using System.Web;
     using System.Web.Mvc;
-    using AutoMapper.QueryableExtensions;
+    using System.Data.Entity;
+    using System.Linq;
+
+    using GiftBox.Common;
+    using GiftBox.Web.Infrastructure.Populators;
+    using GiftBox.Web.Views.Categories;
     using GiftBox.Services.Data.Contracts;
     using GiftBox.Web.ViewModels.Need;
+
+    using PagedList;
+    
+    using AutoMapper.QueryableExtensions;
+   
 
     public class NeedController : BaseController
     {
@@ -26,13 +29,16 @@ namespace GiftBox.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult All()
+        public ActionResult All(int? page)
         {
-          var allNeeds = this.needs
-                .GetAll()
-                .ProjectTo<NeedViewModel>();
+            var allNeeds = this.needs
+                  .GetAll()
+                  .OrderBy(x => x.CreatedOn)
+                  .ProjectTo<NeedViewModel>();
 
-            return this.View(allNeeds);
+            int pageNumber = page ?? 1;
+
+            return this.View(allNeeds.ToPagedList(pageNumber, 2));
         }
 
         [HttpGet]

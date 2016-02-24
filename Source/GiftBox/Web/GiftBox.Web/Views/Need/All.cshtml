@@ -1,5 +1,6 @@
 ﻿@using GiftBox.Common
-@model IEnumerable<GiftBox.Web.ViewModels.Need.NeedViewModel>
+@using PagedList.Mvc
+@model PagedList.IPagedList<GiftBox.Web.ViewModels.Need.NeedViewModel>
 @{
     ViewBag.Title = "All";
 }
@@ -12,6 +13,10 @@
 
 <div id="all-needs">
     @Html.Partial(GlobalConstants.ListNeedsPartial, Model)
+    <div class="center">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("All", new { page }))
+    </div>
 </div>
 
 @section scripts

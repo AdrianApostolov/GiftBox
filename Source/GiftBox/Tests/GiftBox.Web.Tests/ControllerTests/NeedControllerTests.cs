@@ -38,7 +38,7 @@
                 .Returns(new List<Need>().AsQueryable());
 
             var controller = new NeedController(usersService.Object, needsService.Object, dropDownPopulator.Object);
-            controller.WithCallTo(x => x.All())
+            controller.WithCallTo(x => x.All(1))
                 .ShouldRenderView("All");
         }
 
