@@ -2,10 +2,11 @@
 {
     using System.Web.Mvc;
 
+    using GiftBox.Common;
     using GiftBox.Services.Data.Contracts;
     using GiftBox.Web.Controllers;
 
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = GlobalConstants.AdminRole)]
     public abstract class AdminController : BaseController
     {
         public readonly IDataService data;

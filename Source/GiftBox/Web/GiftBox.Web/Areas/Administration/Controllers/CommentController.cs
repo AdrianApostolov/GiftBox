@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using GiftBox.Services.Data.Contracts;
-using GiftBox.Web.Areas.Administration.ViewModels.Base;
-using GiftBox.Web.Areas.Administration.ViewModels.Comments;
-using Kendo.Mvc.UI;
-
-namespace GiftBox.Web.Areas.Administration.Controllers
+﻿namespace GiftBox.Web.Areas.Administration.Controllers
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Web.Mvc;
+
+    using GiftBox.Services.Data.Contracts;
+    using GiftBox.Web.Areas.Administration.ViewModels.Comments;
+
+    using Kendo.Mvc.UI;
+
     public class CommentController : KendoGridAdministrationController
     {
         public CommentController(IUsersService users, IDataService data)

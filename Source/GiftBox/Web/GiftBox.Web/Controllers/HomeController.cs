@@ -2,20 +2,24 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+
     using AutoMapper.QueryableExtensions;
+
     using GiftBox.Common;
     using GiftBox.Services.Data.Contracts;
     using GiftBox.Web.Infrastructure.HtmlHelpers;
     using GiftBox.Web.ViewModels.Institution;
+
     using PagedList;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private const int PageSize = 6;
         private const int AjaxSearchResult = 6;
         private IHomeService homes;
 
-        public HomeController(IHomeService homes)
+        public HomeController(IUsersService users, IHomeService homes)
+            : base(users)
         {
             this.homes = homes;
         }

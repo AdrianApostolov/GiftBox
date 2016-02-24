@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace GiftBox.Common
+﻿namespace GiftBox.Common
 {
     public static class GlobalConstants
     {

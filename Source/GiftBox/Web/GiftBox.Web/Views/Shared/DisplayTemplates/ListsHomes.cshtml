@@ -4,7 +4,7 @@
     @foreach (var home in Model)
         {
         <a href=@Url.Action("Details", "Institution", new { area = "", id = home.Id })>
-            <div class="col s4 hoverable flipInX animated" style="padding: 0 10px;">
+            <div class="col s4 flipInX animated hoverable" style="padding: 0 10px;">
                 <div class="card z-depth-2">
                     <div class="card-image">
                         <img id="storyImage" src=@home.ImageUrl alt="sample image" />

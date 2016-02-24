@@ -1,13 +1,15 @@
-﻿using System.Collections;
-using AutoMapper;
-using GiftBox.Data.Common.Models;
-using GiftBox.Services.Data.Contracts;
-using GiftBox.Web.Areas.Administration.ViewModels.Base;
-using Kendo.Mvc.Extensions;
-using Kendo.Mvc.UI;
-
-namespace GiftBox.Web.Areas.Administration.Controllers
+﻿namespace GiftBox.Web.Areas.Administration.Controllers
 {
+    using System.Collections;
+    using AutoMapper;
+
+    using GiftBox.Data.Common.Models;
+    using GiftBox.Services.Data.Contracts;
+    using GiftBox.Web.Areas.Administration.ViewModels.Base;
+
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
+
     using System.Web.Mvc;
 
     public abstract class KendoGridAdministrationController : AdminController
