@@ -13,7 +13,7 @@
     public class GiftBoxDbContext : IdentityDbContext<User>, IGiftBoxDbContext
     {
         public GiftBoxDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("GiftBoxConnection", throwIfV1Schema: false)
         {
             this.Configuration.ProxyCreationEnabled = false; 
         }
